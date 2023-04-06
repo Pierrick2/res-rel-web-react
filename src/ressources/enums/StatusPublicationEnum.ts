@@ -3,3 +3,4 @@ export enum StatusPublicationEnum {
   VALIDEE = "Validée",
   REFUSEE = "Refusée",
 }
+

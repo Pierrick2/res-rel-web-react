@@ -1,7 +1,6 @@
 import { PublicationEntity } from "../ressources/models/PublicationEntity";
 import RestClient from "./RestClient";
 
-
 export class PublicationService {
   private baseUrl = "ressources";
 
@@ -11,50 +10,30 @@ export class PublicationService {
     this.restClient = new RestClient();
   }
 
-  //   public static async getPublications(): Promise<any> {
-  //     const response = await fetch(this.baseUrl);
-  //     const data = await response.json();
-  //     return data;
-  //   }
-
-  public async AddLikeToPublication(id: number): Promise<any> {
-    // const response = await fetch(`${this.baseUrl}/${id}/like`, {
-    //   method: "POST",
-    // });
-    // const data = await response.json();
+  public async addLikeToPublication(id: number): Promise<any> {
     const data = "Publication likée";
     return data;
-
   }
 
-  public async AddCommentaireToPublication(
+  public async addCommentaireToPublication(
     id: number,
     comment: string
   ): Promise<any> {
-    // const response = await fetch(`${this.baseUrl}/${id}/comment`, {
-    //   method: "POST",
-    //   body: JSON.stringify({ comment }),
-    // });
-    // const data = await response.json();
     const data = "Commentaire ajouté";
     return data;
   }
 
-  public async SauvegarderPublication(id: number): Promise<any> {
-    // const response = await fetch(`${this.baseUrl}/${id}/save`, {
-    //   method: "POST",
-    // });
-    // const data = await response.json();
+  public async sauvegarderPublication(id: number): Promise<any> {
     const data = "Publication sauvegardée";
     return data;
   }
 
-  public async GetPublications(query: any = {}): Promise<PublicationEntity[]> {
+  public async getPublications(query: any = {}): Promise<PublicationEntity[]> {
     const response = await this.restClient.get(this.baseUrl, query);
     return response.data;
   }
 
-  public async GetAllPublications(
+  public async getAllPublications(
     filtres: any = {}
   ): Promise<PublicationEntity[]> {
     const response = await this.restClient.get(this.baseUrl, filtres);
@@ -79,7 +58,7 @@ export class PublicationService {
     return listePublications;
   }
 
-  public async GetListePublicationsUtilisateur(
+  public async getListePublicationsUtilisateur(
     id: number,
     params: any = {}
   ): Promise<PublicationEntity[]> {
@@ -105,20 +84,12 @@ export class PublicationService {
     return listePublications;
   }
 
-  public async ValiderPublication(id: number): Promise<any> {
-    // const response = await fetch(`${this.baseUrl}/${id}/validate`, {
-    //   method: "POST",
-    // });
-    // const data = await response.json();
+  public async validerPublication(id: number): Promise<any> {
     const data = "Publication validée";
     return data;
   }
 
-  public async RefuserPublication(id: number): Promise<any> {
-    // const response = await fetch(`${this.baseUrl}/${id}/refuse`, {
-    //   method: "POST",
-    // });
-    // const data = await response.json();
+  public async refuserPublication(id: number): Promise<any> {
     const data = "Publication refusée";
     return data;
   }

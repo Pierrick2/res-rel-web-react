@@ -1,5 +1,5 @@
 import RestClient from "./RestClient";
-import CategorieEntity from "../ressources/types/CategorieEntity";
+import CategorieEntity from "../ressources/models/CategorieEntity";
 
 class CategorieService {
   private baseUrl = "categories";

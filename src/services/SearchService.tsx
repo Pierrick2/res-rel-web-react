@@ -1,5 +1,6 @@
 import { BehaviorSubject } from "rxjs";
 import RestClient from "./RestClient";
+
 class SearchService {
   private baseUrl = "search";
 

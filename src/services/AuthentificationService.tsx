@@ -1,10 +1,8 @@
 import React, { useContext, useEffect, useMemo, useReducer } from "react";
-
 import { AuthentificationEnum } from "../ressources/enums/AuthentificationEnum";
-import { UtilisateurEntity } from "../ressources/types/UtilisateurEntity";
+import { UtilisateurEntity } from "../ressources/models/UtilisateurEntity";
 
 const AuthContext = React.createContext({} as any);
-
 const AUTHENTICATED = AuthentificationEnum.AUTHENTICATED;
 const ACCESS_TOKEN_KEY = AuthentificationEnum.ACCESS_TOKEN_KEY;
 const CURRENT_USER = AuthentificationEnum.CURRENT_USER;

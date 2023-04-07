@@ -1,5 +1,7 @@
-import { PublicationEntity } from "../ressources/types/PublicationEntity";
+import { PublicationEntity } from "../ressources/models/PublicationEntity";
 import RestClient from "./RestClient";
+
+
 export class PublicationService {
   private baseUrl = "ressources";
 
@@ -22,6 +24,7 @@ export class PublicationService {
     // const data = await response.json();
     const data = "Publication likée";
     return data;
+
   }
 
   public async AddCommentaireToPublication(

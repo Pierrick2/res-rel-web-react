@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import logo from "../../assets/resre_logo_2.png";
-import "../../styles/Navbar.css"
+import "../../styles/Navbar.scss"
 
 export default function Navbar() {
   return (

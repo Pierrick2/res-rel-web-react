@@ -2,43 +2,38 @@ import { PublicationEntity } from "../ressources/models/PublicationEntity";
 import RestClient from "./RestClient";
 
 export class PublicationService {
-  private baseUrl = "ressources";
+  baseUrl = "ressources";
 
-  private restClient: RestClient;
+  restClient;
 
   constructor() {
     this.restClient = new RestClient();
   }
 
-  public async addLikeToPublication(id: number): Promise<any> {
+  async addLikeToPublication(id) {
     const data = "Publication likée";
     return data;
   }
 
-  public async addCommentaireToPublication(
-    id: number,
-    comment: string
-  ): Promise<any> {
+  async addCommentaireToPublication(id, comment) {
     const data = "Commentaire ajouté";
     return data;
   }
 
-  public async sauvegarderPublication(id: number): Promise<any> {
+  async sauvegarderPublication(id) {
     const data = "Publication sauvegardée";
     return data;
   }
 
-  public async getPublications(query: any = {}): Promise<PublicationEntity[]> {
+  async getPublications(query = {}) {
     const response = await this.restClient.get(this.baseUrl, query);
     return response.data;
   }
 
-  public async getAllPublications(
-    filtres: any = {}
-  ): Promise<PublicationEntity[]> {
+  async getAllPublications(filtres = {}) {
     const response = await this.restClient.get(this.baseUrl, filtres);
 
-    const listePublications = response.data.map((publication: any) => {
+    const listePublications = response.data.map((publication) => {
       return new PublicationEntity(
         publication.id,
         publication.titre,
@@ -58,13 +53,10 @@ export class PublicationService {
     return listePublications;
   }
 
-  public async getListePublicationsUtilisateur(
-    id: number,
-    params: any = {}
-  ): Promise<PublicationEntity[]> {
+  async getListePublicationsUtilisateur(id, params = {}) {
     const response = await this.restClient.get(this.baseUrl, params);
 
-    const listePublications = response.data.map((publication: any) => {
+    const listePublications = response.data.map((publication) => {
       return new PublicationEntity(
         publication.id,
         publication.titre,
@@ -84,12 +76,12 @@ export class PublicationService {
     return listePublications;
   }
 
-  public async validerPublication(id: number): Promise<any> {
+  async validerPublication(id) {
     const data = "Publication validée";
     return data;
   }
 
-  public async refuserPublication(id: number): Promise<any> {
+  async refuserPublication(id) {
     const data = "Publication refusée";
     return data;
   }

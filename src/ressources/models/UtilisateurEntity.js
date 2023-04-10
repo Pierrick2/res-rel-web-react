@@ -1,22 +1,22 @@
 export class UtilisateurEntity {
   // Attributs
-  private _nom: string;
-  private _prenom: string;
-  private _email: string;
-  private _contenu: string;
-  private _dateNaissance: Date;
-  private _dateInscription: Date;
-  private _lienPhoto: string;
+  _nom;
+  _prenom;
+  _email;
+  _contenu;
+  _dateNaissance;
+  _dateInscription;
+  _lienPhoto;
 
   // Constructeur
   constructor(
-    nom: string,
-    prenom: string,
-    email: string,
-    contenu: string,
-    dateNaissance: Date,
-    dateInscription: Date,
-    lienPhoto: string
+    nom,
+    prenom,
+    email,
+    contenu,
+    dateNaissance,
+    dateInscription,
+    lienPhoto
   ) {
     this._nom = nom;
     this._prenom = prenom;
@@ -27,59 +27,59 @@ export class UtilisateurEntity {
     this._lienPhoto = lienPhoto;
   }
 
-  get nom(): string {
+  get nom() {
     return this._nom;
   }
 
-  get prenom(): string {
+  get prenom() {
     return this._prenom;
   }
 
-  set nom(value: string) {
+  set nom(value) {
     this._nom = value;
   }
 
-  set prenom(value: string) {
+  set prenom(value) {
     this._prenom = value;
   }
 
-  get email(): string {
+  get email() {
     return this._email;
   }
 
-  set email(value: string) {
+  set email(value) {
     this._email = value;
   }
 
-  get contenu(): string {
+  get contenu() {
     return this._contenu;
   }
 
-  set contenu(value: string) {
+  set contenu(value) {
     this._contenu = value;
   }
 
-  get dateNaissance(): Date {
+  get dateNaissance() {
     return this._dateNaissance;
   }
 
-  set dateNaissance(value: Date) {
+  set dateNaissance(value) {
     this._dateNaissance = value;
   }
 
-  get dateInscription(): Date {
+  get dateInscription() {
     return this._dateInscription;
   }
 
-  set dateInscription(value: Date) {
+  set dateInscription(value) {
     this._dateInscription = value;
   }
 
-  get lienPhoto(): string {
+  get lienPhoto() {
     return this._lienPhoto;
   }
 
-  set lienPhoto(value: string) {
+  set lienPhoto(value) {
     this._lienPhoto = value;
   }
 }

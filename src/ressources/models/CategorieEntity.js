@@ -1,24 +1,24 @@
 export default class CategorieEntity {
-  private _id: number;
-  private _nom: string;
-  constructor(id: number, nom: string) {
+  _id;
+  _nom;
+  constructor(id, nom) {
     this._id = id;
     this._nom = nom;
   }
 
-  get id(): number {
+  get id() {
     return this._id;
   }
 
-  get nom(): string {
+  get nom() {
     return this._nom;
   }
 
-  set id(value: number) {
+  set id(value) {
     this._id = value;
   }
 
-  set nom(value: string) {
+  set nom(value) {
     this._nom = value;
   }
 }

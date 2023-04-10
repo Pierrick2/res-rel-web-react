@@ -2,14 +2,14 @@ import RestClient from "./RestClient";
 import CategorieEntity from "../ressources/models/CategorieEntity";
 
 class CategorieService {
-  private baseUrl = "categories";
+  baseUrl = "categories";
 
-  private restClient: RestClient;
+  restClient;
   constructor() {
     this.restClient = new RestClient();
   }
 
-  public async GetAllCategories(): Promise<CategorieEntity[]> {
+  async GetAllCategories() {
     const response = await this.restClient.get(this.baseUrl);
     return response.data;
   }

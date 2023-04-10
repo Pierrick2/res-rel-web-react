@@ -1,12 +1,9 @@
 import axios from "axios";
 
-interface Params {
-  [key: string]: string;
-}
 export default class RestClient {
-  private baseUrl = "https://api.victor-gombert.fr/api/v1/";
+  baseUrl = "https://api.victor-gombert.fr/api/v1/";
 
-  async get(path: string, params?: Params): Promise<any> {
+  async get(path, params) {
     const url = this.baseUrl + path;
 
     const response = await axios.get(url, { params });
@@ -17,7 +14,7 @@ export default class RestClient {
     }
   }
 
-  async post(path: string, body: any): Promise<any> {
+  async post(path, body) {
     const url = this.baseUrl + path;
     const response = await axios.post(url, body);
     if (response.status >= 200 && response.status < 300) {
@@ -27,7 +24,7 @@ export default class RestClient {
     }
   }
 
-  async put(path: string, body: any): Promise<any> {
+  async put(path, body) {
     const url = this.baseUrl + path;
     const response = await axios.put(url, body);
     if (response.status >= 200 && response.status < 300) {
@@ -37,7 +34,7 @@ export default class RestClient {
     }
   }
 
-  async delete(path: string): Promise<any> {
+  async delete(path) {
     const url = this.baseUrl + path;
     const response = await axios.delete(url);
     if (response.status >= 200 && response.status < 300) {
@@ -47,7 +44,7 @@ export default class RestClient {
     }
   }
 
-  async patch(path: string, body: any): Promise<any> {
+  async patch(path, body) {
     const url = this.baseUrl + path;
     const response = await axios.patch(url, body);
     if (response.status >= 200 && response.status < 300) {

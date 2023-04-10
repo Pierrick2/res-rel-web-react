@@ -2,26 +2,26 @@ import { BehaviorSubject } from "rxjs";
 import RestClient from "./RestClient";
 
 class SearchService {
-  private baseUrl = "search";
+  baseUrl = "search";
 
-  private restClient: RestClient;
+  restClient;
 
-  private listeResultats = new BehaviorSubject<any[]>([]);
+  listeResultats = new BehaviorSubject([]);
 
   constructor() {
     this.restClient = new RestClient();
   }
 
-  public async Search(query: any = {}): Promise<any[]> {
+  async Search(query = {}) {
     const reponse = await this.restClient.post(this.baseUrl, query);
     return reponse.data;
   }
 
-  public SetListeResultats(listeResultats: any[]) {
+  SetListeResultats(listeResultats) {
     this.listeResultats.next(listeResultats);
   }
 
-  public GetListeResultats() {
+  GetListeResultats() {
     return this.listeResultats.asObservable();
   }
 }

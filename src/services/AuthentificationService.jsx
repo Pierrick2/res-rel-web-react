@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useMemo, useReducer } from "react";
 import { AuthentificationEnum } from "../ressources/enums/AuthentificationEnum";
 import { UtilisateurEntity } from "../ressources/models/UtilisateurEntity";
 
-const AuthContext = React.createContext({} as any);
+const AuthContext = React.createContext({});
 const AUTHENTICATED = AuthentificationEnum.AUTHENTICATED;
 const ACCESS_TOKEN_KEY = AuthentificationEnum.ACCESS_TOKEN_KEY;
 const CURRENT_USER = AuthentificationEnum.CURRENT_USER;
@@ -28,7 +28,7 @@ const getUtilisateurToken = () => {
   }).then((result) => result.json());
 };
 
-const getUtilisateur = (token: string) => {
+const getUtilisateur = (token) => {
   return fetch("https://run.mocky.io/v3/5910a865-8ebf-4fab-b27f-70f96551c5d4", {
     method: "GET",
     headers: {
@@ -40,9 +40,9 @@ const getUtilisateur = (token: string) => {
 };
 
 // Récupère le
-export const AuthContainer = ({ children }: any) => {
+export const AuthContainer = ({ children }) => {
   const [authState, dispatch] = useReducer(
-    (prevState: any, action: any) => {
+    (prevState, action) => {
       switch (action.type) {
         // Handle the AUTHENTICATED action and set the state to be authenticated
         case AUTHENTICATED:
@@ -72,7 +72,7 @@ export const AuthContainer = ({ children }: any) => {
 
           let user = (await getUtilisateur(
             result.access_token
-          )) as UtilisateurEntity;
+          ));
 
           // Add all other user Attributes here
           // TODO: à supprimer après

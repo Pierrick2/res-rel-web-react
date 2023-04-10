@@ -2,13 +2,13 @@ import { BehaviorSubject, Observable } from "rxjs";
 import FiltreEntity from "../ressources/models/FiltreEntity";
 
 class FiltreService {
-  private filtres = new BehaviorSubject<FiltreEntity>({} as FiltreEntity);
+  filtres = new BehaviorSubject({});
 
-  public getFiltres(): Observable<FiltreEntity> {
+  getFiltres() {
     return this.filtres.asObservable();
   }
 
-  public setFiltres(filtres: FiltreEntity): void {
+  setFiltres(filtres) {
     this.filtres.next(filtres);
   }
 }

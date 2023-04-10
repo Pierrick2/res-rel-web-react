@@ -6,6 +6,7 @@ import Navbar from "../components/Navbar/Navbar";
 import ListeActivites from "./Activites/ListeActivites";
 import Activite from "./Activites/Activite";
 import CreationActivite from "./Activites/CreationActivite";
+import ListeRessources from "./Ressources/ListeRessources";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/ressource/:id" element={<RessourceUnique />} />
+        <Route path="/ressource" element={<ListeRessources />} />
         <Route path="/liste-activite" element={<ListeActivites />} />
         <Route path="/activite" element={<Activite />} />
         <Route path="/creation-activite" element={<CreationActivite />} />

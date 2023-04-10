@@ -2,33 +2,33 @@ import { StatusPublicationEnum } from "../enums/StatusPublicationEnum";
 
 export class PublicationEntity {
   // Attributs
-  private _id: number;
-  private _titre: string;
-  private _auteur: string;
-  private _contenu: string;
-  private _status: StatusPublicationEnum;
-  private _raisonRefus: any;
-  private _dateCreation: Date;
-  private _datePublication: Date;
-  private _lienImage: string;
-  private _idCategorie: number;
-  private _idUtilisateur: number;
-  private _navigation: any;
+  _id;
+  _titre;
+  _auteur;
+  _contenu;
+  _status;
+  _raisonRefus;
+  _dateCreation;
+  _datePublication;
+  _lienImage;
+  _idCategorie;
+  _idUtilisateur;
+  _navigation;
 
   // Constructeur
   constructor(
-    id: number,
-    titre: string,
-    auteur: string,
-    contenu: string,
-    status: StatusPublicationEnum,
-    raisonRefus: any,
-    dateCreation: Date,
-    datePublication: Date,
-    lienImage: string,
-    idCategorie: number,
-    idUtilisateur: number,
-    navigation: any
+    id,
+    titre,
+    auteur,
+    contenu,
+    status,
+    raisonRefus,
+    dateCreation,
+    datePublication,
+    lienImage,
+    idCategorie,
+    idUtilisateur,
+    navigation
   ) {
     this._id = id;
     this._titre = titre;
@@ -45,100 +45,100 @@ export class PublicationEntity {
   }
 
   // Getters
-  get id(): number {
+  get id() {
     return this._id;
   }
 
-  get titre(): string {
+  get titre() {
     return this._titre;
   }
 
-  get auteur(): string {
+  get auteur() {
     return this._auteur;
   }
 
-  get contenu(): string {
+  get contenu() {
     return this._contenu;
   }
 
-  get status(): StatusPublicationEnum {
+  get status() {
     return this._status;
   }
 
-  get raisonRefus(): any {
+  get raisonRefus() {
     return this._raisonRefus;
   }
 
-  get dateCreation(): Date {
+  get dateCreation() {
     return this._dateCreation;
   }
 
-  get datePublication(): Date {
+  get datePublication() {
     return this._datePublication;
   }
 
-  get lienImage(): string {
+  get lienImage() {
     return this._lienImage;
   }
 
-  get idCategorie(): number {
+  get idCategorie() {
     return this._idCategorie;
   }
 
-  get idUtilisateur(): number {
+  get idUtilisateur() {
     return this._idUtilisateur;
   }
 
-  get navigation(): any {
+  get navigation() {
     return this._navigation;
   }
 
   // Setters
-  set id(value: number) {
+  set id(value) {
     this._id = value;
   }
 
-  set titre(value: string) {
+  set titre(value) {
     this._titre = value;
   }
 
-  set auteur(value: string) {
+  set auteur(value) {
     this._auteur = value;
   }
 
-  set contenu(value: string) {
+  set contenu(value) {
     this._contenu = value;
   }
 
-  set status(value: StatusPublicationEnum) {
+  set status(value) {
     this._status = value;
   }
 
-  set raisonRefus(value: any) {
+  set raisonRefus(value) {
     this._raisonRefus = value;
   }
 
-  set dateCreation(value: Date) {
+  set dateCreation(value) {
     this._dateCreation = value;
   }
 
-  set datePublication(value: Date) {
+  set datePublication(value) {
     this._datePublication = value;
   }
 
-  set lienImage(value: string) {
+  set lienImage(value) {
     this._lienImage = value;
   }
 
-  set idCategorie(value: number) {
+  set idCategorie(value) {
     this._idCategorie = value;
   }
 
-  set idUtilisateur(value: number) {
+  set idUtilisateur(value) {
     this._idUtilisateur = value;
   }
 
-  set navigation(value: any) {
+  set navigation(value) {
     this._navigation = value;
   }
 }

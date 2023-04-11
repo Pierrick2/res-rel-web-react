@@ -30,6 +30,11 @@ export class PublicationService {
     return response.data;
   }
 
+  async getPublication(id) {
+    const response = await this.restClient.get(`${this.baseUrl}/${id}`);
+    return response.data;
+  }
+
   async getAllPublications(filtres = {}) {
     const response = await this.restClient.get(this.baseUrl, filtres);
 

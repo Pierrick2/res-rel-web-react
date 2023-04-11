@@ -2,29 +2,37 @@ import React from "react";
 import { useState } from "react";
 import PublicationService from "../../services/PublicationService";
 import "../../styles/AffichageRessources.scss";
-
+import { Link } from 'react-router-dom';
 
 export default function ListeRessources() {
 
   const [publications, setPublications] = useState([]);
 
+
   React.useEffect(() => {
     PublicationService.getAllPublications().then((publications) => {
       setPublications(publications)
+      console.log(publications)
     })
   }, []);
 
   if (!publications) return null;
   return (
-    <div className="ressource-card ">
+    <div>
       {publications.map((publication) => (
-        <div key={publication.id}>
-          <h2>{publication.titre}</h2>
-          <p>Mis en ligne le {publication.dateCreation} par {publication.idUtilisateur}</p>
-          <img src="publication.contenu" alt="publication.titre" />
-          <p>{publication.contenu}</p>
-          <p>{publication.idCategorie}</p>
-          <button click="RessourceUnique()">Voir plus</button>
+        <div className="ressource-card ">
+          <div key={publication.id}>
+            <h2>{publication.titre}</h2>
+            <p>Mis en ligne le {publication.dateCreation} par {publication.idUtilisateur}</p>
+            <img src="publication.contenu" alt="Image de la publication" />
+            <p>{publication.contenu}</p>
+            <p>Catégorie {publication.idCategorie}</p>
+            <div key={publication.id}>
+              <Link to={`/ressources/${publication.id}`}>
+                <button>Voir plus</button>
+              </Link>
+            </div>
+          </div>
         </div>
       ))}
     </div>

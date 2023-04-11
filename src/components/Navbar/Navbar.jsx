@@ -6,17 +6,15 @@ import "../../styles/Navbar.scss"
 export default function Navbar() {
   return (
     <div className="navbar">
-    <Link to="/">
+      <Link to="/">
         <img src={logo} alt="Logo res rel" className="header-logo" />
-    </Link>
-    
-    <div>
-        <nav>
-          <Link to="/">Accueil</Link>
-          <Link to="/ressource">Ressource</Link>
-          <Link to="/liste-activite">Activités</Link>
+      </Link>
+
+      <nav>
+        <Link to="/">Accueil</Link>
+        <Link to="/ressources">Ressource</Link>
+        <Link to="/liste-activite">Activités</Link>
       </nav>
-    </div>
     </div>
   )
 }

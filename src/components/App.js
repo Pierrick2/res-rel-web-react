@@ -7,6 +7,7 @@ import ListeActivites from "./Activites/ListeActivites";
 import Activite from "./Activites/Activite";
 import CreationActivite from "./Activites/CreationActivite";
 import ListeRessources from "./Ressources/ListeRessources";
+import CreationRessource from "./Ressources/CreationRessource";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/ressources/:id" element={<RessourceUnique />} />
+        <Route path="/creation-ressource" element={<CreationRessource />} />
         <Route path="/ressources" element={<ListeRessources />} />
         <Route path="/liste-activite" element={<ListeActivites />} />
         <Route path="/activite" element={<Activite />} />

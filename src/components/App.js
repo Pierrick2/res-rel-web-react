@@ -8,6 +8,8 @@ import Activite from "./Activites/Activite";
 import CreationActivite from "./Activites/CreationActivite";
 import ListeRessources from "./Ressources/ListeRessources";
 import CreationRessource from "./Ressources/CreationRessource";
+import Inscription from "./Utilisateur/Inscription";
+import Connexion from "./Utilisateur/Connexion";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/inscription" element={<Inscription />} />
+        <Route path="/connexion" element={<Connexion />} />
         <Route path="/ressources/:id" element={<RessourceUnique />} />
         <Route path="/creation-ressource" element={<CreationRessource />} />
         <Route path="/ressources" element={<ListeRessources />} />

@@ -25,7 +25,7 @@ export default function Activites() {
                     <label for="description">Description :</label>
                     <textarea id="description" name="description" required></textarea>
 
-                    <button type="submit">Envoyer</button>
+                    <button type="submit">Créer une activité</button>
                 </form>
             </div>
 

@@ -23,6 +23,10 @@ export default function Inscription() {
                     <input type="date" id="dateNaissance" name="dateNaissance" required />
                 </div>
                 <div class="form-group">
+                    <label for="codePostal">Code postal :</label>
+                    <input type="text" id="codePostal" name="codePostal" required />
+                </div>
+                <div class="form-group">
                     <label for="password">Mot de passe :</label>
                     <input type="password" id="password" name="password" required />
                 </div>

@@ -2,18 +2,16 @@ import React from "react";
 import { useState } from "react";
 import PublicationService from "../../services/PublicationService";
 import "../../styles/AffichageRessources.scss";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export default function ListeRessources() {
-
   const [publications, setPublications] = useState([]);
-
 
   React.useEffect(() => {
     PublicationService.getAllPublications().then((publications) => {
-      setPublications(publications)
-      console.log(publications)
-    })
+      setPublications(publications);
+      console.log(publications);
+    });
   }, []);
 
   if (!publications) return null;
@@ -23,7 +21,10 @@ export default function ListeRessources() {
         <div className="ressource-card ">
           <div key={publication.id}>
             <h2>{publication.titre}</h2>
-            <p>Mis en ligne le {publication.dateCreation} par {publication.idUtilisateur}</p>
+            <p>
+              Mis en ligne le {publication.dateCreation} par{" "}
+              {publication.idUtilisateur}
+            </p>
             <img src="publication.contenu" alt="Image de la publication" />
             <p>{publication.contenu}</p>
             <p>Catégorie {publication.idCategorie}</p>

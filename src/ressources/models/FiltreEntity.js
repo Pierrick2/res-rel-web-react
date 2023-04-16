@@ -1,36 +1,10 @@
 class FiltreEntity {
-  _dateDebut;
-  _dateFin;
-  _categorie;
+  dateDebut;
+  dateFin;
+  categorie;
 
-  constructor(dateDebut, dateFin, categorie) {
-    this._dateDebut = dateDebut;
-    this._dateFin = dateFin;
-    this._categorie = categorie;
-  }
-
-  get dateDebut() {
-    return this._dateDebut;
-  }
-
-  set dateDebut(value) {
-    this._dateDebut = value;
-  }
-
-  get dateFin() {
-    return this._dateFin;
-  }
-
-  set dateFin(value) {
-    this._dateFin = value;
-  }
-
-  get categorie() {
-    return this._categorie;
-  }
-
-  set categorie(value) {
-    this._categorie = value;
+  constructor(init) {
+    Object.assign(this, init);
   }
 }
 
@@ -43,5 +17,3 @@ const FiltresRequetes = {
   ressourceQuery: undefined,
   utilisateurQuery: undefined,
 };
-
-export default FiltreEntity;

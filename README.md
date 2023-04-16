@@ -1,25 +1,25 @@
-# Getting Started with Create React App
+# Lancement du projet
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Installer yarn
 
-yarn
-moment
-axios
-rxjs
-mui material
-sass
+`npm install -g yarn`
 
-## Available Scripts
+## Installer les librairies
 
-In the project directory, you can run:
+Cette commande installera toutes les librairies requises dans package.json
 
-### `npm start`
+`yarn`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Lancer le serveur de développement
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+`yarn start`
+
+Lance l'application web en mode développement.\
+Ouvrir [http://localhost:3000](http://localhost:3000) pour l'ouvrir dans le navigateur.
+
+La page se rechargera à chaque changement.
+
+<!-- # Autres commandes (en anglais)
 
 ### `npm test`
 
@@ -74,4 +74,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 ### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify) -->

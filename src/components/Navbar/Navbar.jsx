@@ -1,7 +1,7 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 import logo from "../../assets/resre_logo_2.png";
-import "../../styles/Navbar.scss"
+import "../../styles/Navbar.scss";
 
 export default function Navbar() {
   return (
@@ -16,5 +16,5 @@ export default function Navbar() {
         <Link to="/liste-activite">Activités</Link>
       </nav>
     </div>
-  )
+  );
 }

@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function CreationActivite() {
-  return (
-    <div>CreationActivite</div>
-  )
+  return <div>CreationActivite</div>;
 }

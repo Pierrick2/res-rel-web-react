@@ -1,18 +1,16 @@
 import React, { useContext, useEffect, useMemo, useReducer } from "react";
 import { AuthentificationEnum } from "../ressources/enums/AuthentificationEnum";
-import { UtilisateurEntity } from "../ressources/models/UtilisateurEntity";
+import { useCookies } from "react-cookie";
 
 const AuthContext = React.createContext({});
 const AUTHENTICATED = AuthentificationEnum.AUTHENTICATED;
 const ACCESS_TOKEN_KEY = AuthentificationEnum.ACCESS_TOKEN_KEY;
 const CURRENT_USER = AuthentificationEnum.CURRENT_USER;
 const token = "3|QEDaQoBy4jtzrAFZlSMcnnue8rl94pNhfjSapUr8";
-// clear storage
-// TODO: a supprimer
-// storage.clearAll();
-//
-//
-// Ajouter local storage
+
+const [cookies, setCookie, removeCookie] = useCookies([
+  AuthentificationEnum.ACCESS_TOKEN_KEY,
+]);
 
 const getUtilisateurToken = () => {
   // Récupère le token de l'utilisateur
@@ -68,11 +66,9 @@ export const AuthContainer = ({ children }) => {
         try {
           const result = await getUtilisateurToken();
 
-       //   storage.set(ACCESS_TOKEN_KEY, String(result.access_token));
+          setCookie(ACCESS_TOKEN_KEY, String(result.access_token));
 
-          let user = (await getUtilisateur(
-            result.access_token
-          ));
+          let user = await getUtilisateur(result.access_token);
 
           // Add all other user Attributes here
           // TODO: à supprimer après
@@ -83,7 +79,7 @@ export const AuthContainer = ({ children }) => {
           user.dateNaissance = new Date("1995-01-01");
           user.dateInscription = new Date("2020-01-01");
 
-       //   storage.set(CURRENT_USER, JSON.stringify(user));
+          localStorage.setItem(CURRENT_USER, JSON.stringify(user));
 
           dispatch({ type: AUTHENTICATED });
         } catch (error) {
@@ -92,7 +88,7 @@ export const AuthContainer = ({ children }) => {
       },
 
       resume: async () => {
-      //  const token = storage.getString(ACCESS_TOKEN_KEY);
+        const token = cookies[ACCESS_TOKEN_KEY];
 
         // When no token is found, don't try to fetch the user
         if (!token) {
@@ -110,7 +106,7 @@ export const AuthContainer = ({ children }) => {
         user.dateNaissance = new Date("1995-01-01");
         user.dateInscription = new Date("2020-01-01");
 
-      //  storage.set(CURRENT_USER, JSON.stringify(user));
+        localStorage.setItem(CURRENT_USER, JSON.stringify(user));
 
         dispatch({ type: AUTHENTICATED });
       },

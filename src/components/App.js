@@ -2,7 +2,6 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import RessourceUnique from "./Ressources/RessourceUnique";
 import Navbar from "../components/Navbar/Navbar";
-import ListeActivites from "./Activites/ListeActivites";
 import CreationActivite from "./Activites/CreationActivite";
 import ListeRessources from "./Ressources/ListeRessources";
 import CreationRessource from "./Ressources/CreationRessource";
@@ -11,6 +10,7 @@ import Connexion from "./Utilisateur/Connexion";
 import Parametres from "./Utilisateur/Parametres";
 import Relations from "./Utilisateur/Relations";
 import Activites from "./Activites/Activites";
+import ActiviteUnique from "./Activites/ActiviteUnique";
 
 function App() {
   return (
@@ -26,8 +26,9 @@ function App() {
         <Route path="/ressources/:id" element={<RessourceUnique />} />
         <Route path="/creation-ressource" element={<CreationRessource />} />
         <Route path="/ressources" element={<ListeRessources />} />
-        <Route path="/liste-activite" element={<ListeActivites />} />
         <Route path="/creation-activite" element={<CreationActivite />} />
+        <Route path="/activite-unique" element={<ActiviteUnique />} />
+        
       </Routes>
     </div>
   );

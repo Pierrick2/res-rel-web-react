@@ -2,18 +2,18 @@ import { PublicationEntity } from "../ressources/models/PublicationEntity";
 import RestClient from "./RestClient";
 
 export default class CommentaireService {
-  baseUrl = "commentaires";
+baseUrl = "commentaires";
 
-  restClient;
+restClient;
 
-  constructor() {
+constructor() {
     this.restClient = new RestClient();
   }
-
+  
   async getCommentairesByRessourceId(idRessource) {
     const response = await this.restClient.get(
       `${this.baseUrl}/${idRessource}`
-    );
-    return response.data;
-  }
+      );
+      return response.data;
+    }
 }

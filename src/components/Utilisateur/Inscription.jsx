@@ -7,11 +7,11 @@ export default function Inscription() {
       <h4>Inscription</h4>
       <form>
         <div class="form-group">
-          <label for="nom">Nom d'utilisateur :</label>
+          <label for="nom">Nom de famille :</label>
           <input type="text" id="nom" name="nom" required />
         </div>
         <div class="form-group">
-          <label for="prenom">om d'utilisateur :</label>
+          <label for="prenom">Prénom :</label>
           <input type="text" id="prenom" name="prenom" required />
         </div>
         <div class="form-group">
@@ -19,7 +19,7 @@ export default function Inscription() {
           <input type="email" id="email" name="email" required />
         </div>
         <div class="form-group">
-          <label for="dateNaissance">Adresse e-mail :</label>
+          <label for="dateNaissance">Date de naissance :</label>
           <input type="date" id="dateNaissance" name="dateNaissance" required />
         </div>
         <div class="form-group">

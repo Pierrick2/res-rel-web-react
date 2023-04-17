@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 import React from 'react'
 import { Link } from 'react-router-dom'
 import logo from "../../assets/icon.png";
 import "../../styles/Navbar.scss"
+=======
+import React from "react";
+import { Link } from "react-router-dom";
+import logo from "../../assets/resre_logo_2.png";
+import "../../styles/Navbar.scss";
+>>>>>>> 4be0c8a1216bd3563fa6a067229f3ad1dd045b55
 
 export default function Navbar() {
   return (
@@ -19,5 +26,5 @@ export default function Navbar() {
 
       </nav>
     </div>
-  )
+  );
 }

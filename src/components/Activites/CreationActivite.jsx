@@ -1,6 +1,7 @@
-import React from 'react'
+import React from "react";
 
 export default function CreationActivite() {
+<<<<<<< HEAD
   return (
     <div class="create-activity">
       <h4>Créer une nouvelle activité</h4>
@@ -27,4 +28,7 @@ export default function CreationActivite() {
       </form>
     </div>
   )
+=======
+  return <div>CreationActivite</div>;
+>>>>>>> 4be0c8a1216bd3563fa6a067229f3ad1dd045b55
 }

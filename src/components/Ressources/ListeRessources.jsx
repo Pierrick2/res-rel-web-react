@@ -22,7 +22,7 @@ export default function ListeRessources() {
         <input type="text" placeholder="Rechercher une ressource, un auteur ..." />
         <button type="submit">Rechercher</button>
       </div>
-      <div>
+      <div class="search-form">
         <label htmlFor="categorieFilter">Filtrer par catégorie:</label>
         <select id="categorieFilter">
           <option value="">Toutes les catégories</option>

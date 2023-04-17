@@ -80,3 +80,69 @@ export default function ListeRessources() {
 //         </div>
 //     );
 // }
+// jsx
+// Copy code
+// import React, { useState } from 'react';
+// import PublicationService from '../../services/PublicationService';
+// import '../../styles/AffichageRessources.scss';
+// import '../../styles/BarreRecherche.scss';
+// import { Link } from 'react-router-dom';
+
+// export default function ListeRessources() {
+//   const [publications, setPublications] = useState([]);
+//   const [categorieFilter, setCategorieFilter] = useState('');
+
+//   React.useEffect(() => {
+//     PublicationService.getAllPublications().then((publications) => {
+//       setPublications(publications);
+//       console.log(publications);
+//     });
+//   }, []);
+
+//   if (!publications) return null;
+
+//   const handleFilterChange = (event) => {
+//     setCategorieFilter(event.target.value);
+//   };
+
+//   const filteredPublications = categorieFilter
+//     ? publications.filter((publication) => publication.idCategorie === categorieFilter)
+//     : publications;
+
+//   return (
+//     <div>
+//       <div class="search-form">
+//         <input type="text" placeholder="Rechercher une ressource, un auteur ..." />
+//         <button type="submit">Rechercher</button>
+//       </div>
+//       <div>
+//         <label htmlFor="categorieFilter">Filtrer par catégorie:</label>
+//         <select id="categorieFilter" onChange={handleFilterChange} value={categorieFilter}>
+//           <option value="">Toutes les catégories</option>
+//           <option value="1">Catégorie 1</option>
+//           <option value="2">Catégorie 2</option>
+//           <option value="3">Catégorie 3</option>
+//         </select>
+//       </div>
+//       {filteredPublications.map((publication) => (
+//         <div className="ressource-card " key={publication.id}>
+//           <h2>{publication.titre}</h2>
+//           <p>
+//             Mis en ligne le {publication.dateCreation} par {publication.idUtilisateur}
+//           </p>
+//           <img src="publication.contenu" alt="Image de la publication" />
+//           <p>{publication.contenu}</p>
+//           <p>Catégorie {publication.idCategorie}</p>
+//           <div>
+//             <Link to={`/ressources/${publication.id}`}>
+//               <button>Voir plus</button>
+//             </Link>
+//           </div>
+//         </div>
+//       ))}
+//     </div>
+//   );
+// }
+// Ici, nous avons ajouté un state categorieFilter pour stocker la catégorie sélectionnée par l'utilisateur et nous avons créé une fonction handleFilterChange pour mettre à jour ce state lorsqu'un utilisateur sélectionne une catégorie différente dans la liste déroulante. Nous avons également créé un nouveau tableau filteredPublications qui contient uniquement les publications de la catégorie sélectionnée, ou toutes les publications si aucune catégorie n'est sélectionnée.
+
+// Enfin, nous avons ajouté un élément select dans le JSX pour afficher les options de catégorie, avec un onChange qui appelle la fonction handleFilterChange lorsque l'utilisateur sélectionne une nouvelle catégorie.

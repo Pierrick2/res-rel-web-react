@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import PublicationService from "../../services/PublicationService";
 import "../../styles/AffichageRessources.scss";
+import "../../styles/BarreRecherche.scss"
 import { Link } from "react-router-dom";
 
 export default function ListeRessources() {
@@ -17,6 +18,19 @@ export default function ListeRessources() {
   if (!publications) return null;
   return (
     <div>
+      <div class="search-form">
+        <input type="text" placeholder="Rechercher une ressource, un auteur ..." />
+        <button type="submit">Rechercher</button>
+      </div>
+      <div>
+        <label htmlFor="categorieFilter">Filtrer par catégorie:</label>
+        <select id="categorieFilter">
+          <option value="">Toutes les catégories</option>
+          <option value="1">Catégorie 1</option>
+          <option value="2">Catégorie 2</option>
+          <option value="3">Catégorie 3</option>
+        </select>
+      </div>
       {publications.map((publication) => (
         <div className="ressource-card ">
           <div key={publication.id}>

@@ -4,9 +4,9 @@ import "../../styles/Card.scss";
 
 export default function Connexion() {
   return (
-    <div className="card">
+    <div className="login">
       <h4>Connexion</h4>
-      <form className="login">
+      <form>
         <div class="form-group">
           <label for="email">Adresse e-mail :</label>
           <input type="email" id="email" name="email" required />

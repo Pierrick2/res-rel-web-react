@@ -1,5 +1,6 @@
 .search {
-    max-width: 80%;
+  margin-top: 60px;  
+  max-width: 80%;
     margin: auto;
     h1 {
       margin-bottom: 20px;
@@ -33,9 +34,10 @@
     }
     .search-results {
       display: flex;
-      flex-wrap: nowrap;
+      flex-wrap: wrap;
       justify-content: center;
-      width: 80%;
+      align-items: center;
+      gap: 30px;
       .search-result {
         text-align: center;
         box-sizing: border-box;

@@ -1,7 +1,17 @@
+@import "materialize-css/dist/css/materialize.min.css";
+
 nav {
   display: flex;
   gap: 10px;
   background-color: white;
+  height: 64px;
+  line-height: 64px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  padding: 0 12px;
   a {
     color: #4183f4;
     text-decoration: none;
@@ -26,13 +36,63 @@ nav {
     display: block;
     margin: 0 auto;
   }
+
   .menu {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     margin-left: 50px;
   }
-}
 
-  @media only screen and (max-width: 900px) {
-  nav {
+  @media only screen and (max-width: 992px) {
+    .menu {
+      display: none;
+    }
+  }
+
+  .sidenav-trigger i {
+    font-size: 2rem;
+    line-height: 64px;
+    cursor: pointer;
+    color: #4183f4;
+  }
+
+  @media only screen and (min-width: 992px) {
+    .sidenav-trigger {
+      display: none;
+    }
+  }
+
+  .sidenav {
+    height: 100%;
+  }
+
+  .sidenav li {
+    margin: 0;
+    padding: 0;
+  }
+
+  .sidenav li a {
+    color: #4183f4;
+    padding: 0 24px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .sidenav li a:hover {
+    background-color: #eee;
+  }
+
+  .sidenav .divider {
+    margin: 8px 0;
+  }
+
+  @media only screen and (max-width: 992px) {
+    nav {
+      padding: 0 16px;
+      justify-content: space-between;
+    }
     .brand-logo {
       max-width: 50%;
       max-height: 30px;
@@ -41,4 +101,7 @@ nav {
       font-size: 12px;
     }
   }
+}
+body {
+  margin-top: 80px;
 }

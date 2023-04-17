@@ -11,9 +11,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 const renderApp = () => (
   <BrowserRouter>
     <React.StrictMode>
-      <AuthContainer>
-        <App />
-      </AuthContainer>
+      {/* <AuthContainer> */}
+      <App />
+      {/* </AuthContainer> */}
     </React.StrictMode>
   </BrowserRouter>
 );

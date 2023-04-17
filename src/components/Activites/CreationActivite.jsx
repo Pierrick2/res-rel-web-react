@@ -1,9 +1,9 @@
 import React from "react";
+import "../../styles/Card.scss";
 
 export default function CreationActivite() {
-<<<<<<< HEAD
   return (
-    <div class="create-activity">
+    <div class="card">
       <h4>Créer une nouvelle activité</h4>
       <form>
         <label for="title">Titre :</label>
@@ -18,8 +18,8 @@ export default function CreationActivite() {
         <label for="time">Heure :</label>
         <input type="time" id="time" name="time" required />
 
-        <label for="image">Image :</label>
-        <input type="file" id="image" name="image" accept="image/*" />
+        <label for="image">Image d'illustration de votre activité:</label><br />
+        <input type="file" id="image" name="image" accept="image/*" /><br />
 
         <label for="description">Description :</label>
         <textarea id="description" name="description" required></textarea>
@@ -28,7 +28,4 @@ export default function CreationActivite() {
       </form>
     </div>
   )
-=======
-  return <div>CreationActivite</div>;
->>>>>>> 4be0c8a1216bd3563fa6a067229f3ad1dd045b55
 }

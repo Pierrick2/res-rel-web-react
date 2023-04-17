@@ -1,4 +1,5 @@
 import React from "react";
+import "../../styles/Relations.scss";
 
 export default function () {
   return (
@@ -9,7 +10,7 @@ export default function () {
         <button type="submit">Rechercher</button>
       </div>
       <div class="search-results">
-        <div class="search-result">
+        <div class="card">
           <img src="https://via.placeholder.com/150" alt="Photo de profil" />
           <p>Nom de la personne</p>
           <div class="buttons">
@@ -17,7 +18,7 @@ export default function () {
             <button>Ajouter en ami</button>
           </div>
         </div>
-        <div class="search-result">
+        <div class="card">
           <img src="https://via.placeholder.com/150" alt="Photo de profil" />
           <p>Nom de la personne</p>
           <div class="buttons">
@@ -25,7 +26,7 @@ export default function () {
             <button>Ajouter en ami</button>
           </div>
         </div>
-        <div class="search-result">
+        <div class="card">
           <img src="https://via.placeholder.com/150" alt="Photo de profil" />
           <p>Nom de la personne</p>
           <div class="buttons">

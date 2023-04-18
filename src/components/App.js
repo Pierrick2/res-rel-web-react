@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Routes, Route } from "react-router-dom";
 import RessourceUnique from "./Ressources/RessourceUnique";
 import Navbar from "../components/Navbar/Navbar";
@@ -15,9 +15,10 @@ import Publication from "./Publication/Publication";
 
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
   return (
     <div className="App">
-      <Navbar />
+      <Navbar isAuthenticated={isAuthenticated} />
       <Routes>
         <Route path="/" element={<ListeRessources />} />
         <Route path="/inscription" element={<Inscription />} />

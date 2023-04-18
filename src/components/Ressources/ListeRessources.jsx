@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 
 export default function ListeRessources() {
   const [publications, setPublications] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
 
   React.useEffect(() => {
     PublicationService.getAllPublications().then((publications) => {
@@ -15,15 +17,22 @@ export default function ListeRessources() {
     });
   }, []);
 
-  if (!publications) return null;
+  if (publications.length === 0) {
+    return <p>Chargement en cours...</p>;
+  }
+  const filteredPublications = publications.filter((publication) =>
+  publication.titre.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  publication.auteur.toLowerCase().includes(searchTerm.toLowerCase()) 
+);
+
   return (
     <div>
       <div className="search-form">
-        <input type="text" placeholder="Rechercher une ressource, un auteur ..." />
-        <button type="submit">Rechercher</button>
+        <input type="text" placeholder="Rechercher une ressource, un auteur ..."  />
+        <button type="submit" onChange={(event) => setSearchTerm(event.target.value)} >Rechercher</button>
       </div>
       <div className="search-form">
-        <label htmlhtmlFor="categorieFilter">Filtrer par catégorie:</label>
+        <label htmlFor="categorieFilter">Filtrer par catégorie:</label>
         <select id="categorieFilter">
           <option value="">Toutes les catégories</option>
           <option value="1">Catégorie 1</option>
@@ -31,18 +40,18 @@ export default function ListeRessources() {
           <option value="3">Catégorie 3</option>
         </select>
       </div>
-      {publications.map((publication) => (
-        <div className="ressource-card ">
-          <div key={publication.id}>
+      {filteredPublications.map((publication) => (
+        <div className="ressource-card " key={publication.id}>
+          <div>
             <h2>{publication.titre}</h2>
             <p>
               Mis en ligne le {publication.dateCreation} par{" "}
               {publication.idUtilisateur}
             </p>
-            <img src="publication.contenu" alt="Image de la publication" />
+            <img src="https://picsum.photos/200/300" alt="Image de la publication" />
             <p>{publication.contenu}</p>
             <p>Catégorie {publication.idCategorie}</p>
-            <div key={publication.id}>
+            <div>
               <Link to={`/ressources/${publication.id}`}>
                 <button>Voir plus</button>
               </Link>
@@ -53,6 +62,7 @@ export default function ListeRessources() {
     </div>
   );
 }
+
 
 //     const [publications, setPublications] = useState<PublicationEntity[]>([]);
 

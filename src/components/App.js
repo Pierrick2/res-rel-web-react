@@ -11,6 +11,8 @@ import Parametres from "./Utilisateur/Parametres";
 import Relations from "./Utilisateur/Relations";
 import Activites from "./Activites/Activites";
 import ActiviteUnique from "./Activites/ActiviteUnique";
+import Publication from "./Publication/Publication";
+
 
 function App() {
   return (
@@ -28,6 +30,7 @@ function App() {
         <Route path="/ressources" element={<ListeRessources />} />
         <Route path="/creation-activite" element={<CreationActivite />} />
         <Route path="/activite-unique" element={<ActiviteUnique />} />
+        <Route path="/publication" element={<Publication />} />
         
       </Routes>
     </div>

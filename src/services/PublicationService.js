@@ -55,7 +55,7 @@ export class PublicationService {
       );
     });
     
-    console.log(listePublications);
+    console.log(PublicationEntity);
     return listePublications;
   }
 

@@ -1,5 +1,5 @@
-const AuthentificationEnum = {
+export const AuthentificationEnum = {
   AUTHENTICATED: "AUTHENTICATED",
-  ACCESS_TOKEN_KEY: "access_token",
-  CURRENT_USER: "current_user",
+  ACCESS_TOKEN_KEY: "ACCESS_TOKEN_KEY",
+  CURRENT_USER: "CURRENT_USER",
 };

@@ -19,6 +19,7 @@ const Navbar = ({ isAuthenticated }) => {
       <Link to="/creation-ressource">Créer une ressource</Link>
       {/* <Link to="/creation-activite">Créer une activité</Link> */}
       <Link to="/relations">Mes relations</Link>
+      <Link to="/parametres">Paramètres</Link>
       {/* <li>
         <NotificationContext />
       </li> */}

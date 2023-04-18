@@ -32,6 +32,7 @@ function App() {
         <Route path="/creation-activite" element={<CreationActivite />} />
         <Route path="/activite-unique" element={<ActiviteUnique />} />
         <Route path="/publication" element={<Publication />} />
+        <Route path="/parametres" element={<Parametres />} />
         
       </Routes>
     </div>

@@ -1,11 +1,15 @@
 import React from 'react'
 import "../../styles/ActiviteUnique.scss";
 import imageActivite from '../../assets/img/activite1.png';
+import { Link } from 'react-router-dom'
 
 
 export default function ActiviteUnique() {
   return (
     <div className="activite-unique-container">
+      <div class="buttons">
+        <Link to="http://localhost:3000/activites">Retour aux activités</Link>
+      </div>
       <div className="activite-unique-header">
         <img src={imageActivite} alt="Activité" className="activite-unique-image" />
         <div className="activite-unique-status">Public</div>
@@ -18,8 +22,16 @@ export default function ActiviteUnique() {
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris euismod augue in ipsum bibendum, a lobortis sapien vestibulum. Nulla sagittis diam enim, eget laoreet velit elementum at. Nulla facilisi. Sed interdum nibh elit, eget efficitur quam porttitor vitae. Aenean sodales, ipsum ac lacinia pretium, nulla odio luctus libero, id blandit ante ante eu ante.</p>
       </div>
       <div className="activite-unique-participants">
-        <p>Nombre de participants: 8</p><br/>
+        <p>Nombre de participants: 8</p>
+      </div>
+      <div>
         <p>Nombre d'invités: 2</p>
+      </div>
+      <div class="inscription-button">
+        <Link to="http://localhost:3000/activites">S'inscrire</Link>
+        <div>
+          <Link to="http://localhost:3000/relations">Inviter des relations</Link>
+        </div>
       </div>
     </div>
   );

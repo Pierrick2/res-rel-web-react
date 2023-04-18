@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import logo from "../../assets/icon.png";
 import "../../styles/Navbar.scss";
 import M from 'materialize-css/dist/js/materialize.min.js';
+import NotificationContext from './Notifications';
 
 const Navbar = () => {
 
@@ -52,6 +53,9 @@ const Navbar = () => {
           <li>
             <Link to="/connexion">Connexion</Link>
           </li>
+          {/* <li>
+            <NotificationContext />
+          </li> */}
         </ul>
       </nav>
     </div>

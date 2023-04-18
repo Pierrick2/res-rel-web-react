@@ -6,32 +6,32 @@ export default function Inscription() {
     <div className="signup">
       <h4>Inscription</h4>
       <form>
-        <div class="form-group">
-          <label for="nom">Nom de famille :</label>
+        <div className="form-group">
+          <label htmlFor="nom">Nom de famille :</label>
           <input type="text" id="nom" name="nom" required />
         </div>
-        <div class="form-group">
-          <label for="prenom">Prénom :</label>
+        <div className="form-group">
+          <label htmlFor="prenom">Prénom :</label>
           <input type="text" id="prenom" name="prenom" required />
         </div>
-        <div class="form-group">
-          <label for="email">Adresse e-mail :</label>
+        <div className="form-group">
+          <label htmlFor="email">Adresse e-mail :</label>
           <input type="email" id="email" name="email" required />
         </div>
-        <div class="form-group">
-          <label for="dateNaissance">Date de naissance :</label>
+        <div className="form-group">
+          <label htmlFor="dateNaissance">Date de naissance :</label>
           <input type="date" id="dateNaissance" name="dateNaissance" required />
         </div>
-        <div class="form-group">
-          <label for="codePostal">Code postal :</label>
+        <div className="form-group">
+          <label htmlFor="codePostal">Code postal :</label>
           <input type="text" id="codePostal" name="codePostal" required />
         </div>
-        <div class="form-group">
-          <label for="password">Mot de passe :</label>
+        <div className="form-group">
+          <label htmlFor="password">Mot de passe :</label>
           <input type="password" id="password" name="password" required />
         </div>
-        <div class="form-group">
-          <label for="confirm-password">Confirmer le mot de passe :</label>
+        <div className="form-group">
+          <label htmlFor="confirm-password">Confirmer le mot de passe :</label>
           <input
             type="password"
             id="confirm-password"

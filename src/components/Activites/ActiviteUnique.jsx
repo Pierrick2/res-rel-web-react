@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 export default function ActiviteUnique() {
   return (
     <div className="activite-unique-container">
-      <div class="buttons">
+      <div className="buttons">
         <Link to="http://localhost:3000/activites">Retour aux activités</Link>
       </div>
       <div className="activite-unique-header">
@@ -27,7 +27,7 @@ export default function ActiviteUnique() {
       <div>
         <p>Nombre d'invités: 2</p>
       </div>
-      <div class="inscription-button">
+      <div className="inscription-button">
         <Link to="http://localhost:3000/activites">S'inscrire</Link>
         <div>
           <Link to="http://localhost:3000/relations">Inviter des relations</Link>

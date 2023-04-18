@@ -4,15 +4,15 @@ import "../../styles/Card.scss";
 
 export default function Parametres() {
   return (
-    <div class="card">
+    <div className="card">
       <h4>Paramètres</h4>
       <form>
-        <div class="form-group">
-          <label for="photo">Photo de profil :</label>
+        <div className="form-group">
+          <label htmlFor="photo">Photo de profil :</label>
           <input type="file" id="photo" name="photo" accept="image/*" />
         </div>
-        <div class="form-group">
-          <label for="bio">Biographie :</label>
+        <div className="form-group">
+          <label htmlFor="bio">Biographie :</label>
           <textarea id="bio" name="bio"></textarea>
         </div>
         <button type="submit">Enregistrer</button>

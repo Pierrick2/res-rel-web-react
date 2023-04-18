@@ -18,12 +18,12 @@ export default function ListeRessources() {
   if (!publications) return null;
   return (
     <div>
-      <div class="search-form">
+      <div className="search-form">
         <input type="text" placeholder="Rechercher une ressource, un auteur ..." />
         <button type="submit">Rechercher</button>
       </div>
-      <div class="search-form">
-        <label htmlFor="categorieFilter">Filtrer par catégorie:</label>
+      <div className="search-form">
+        <label htmlhtmlFor="categorieFilter">Filtrer par catégorie:</label>
         <select id="categorieFilter">
           <option value="">Toutes les catégories</option>
           <option value="1">Catégorie 1</option>
@@ -111,7 +111,7 @@ export default function ListeRessources() {
 
 //   return (
 //     <div>
-//       <div class="search-form">
+//       <div className="search-form">
 //         <input type="text" placeholder="Rechercher une ressource, un auteur ..." />
 //         <button type="submit">Rechercher</button>
 //       </div>

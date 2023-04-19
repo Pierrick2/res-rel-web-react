@@ -49,12 +49,23 @@ export default function Navbar() {
       <a href="#" data-target="mobile-demo" className="sidenav-trigger">
         <i className="material-icons">menu</i>
       </a>
+      <ul className="sidenav" id="mobile-demo">
+        <li>
+          <div className="sidenav-header">
+            {/* <Link to="/" className="brand-logo">
+              <img src={logo} alt="Logo res rel" />
+            </Link> */}
+            <a href="#" className="sidenav-close">
+              <i className="material-icons" id='close-btn'>close</i>
+            </a>
+          </div>
+        </li>
+        {auth.authState.authenticated ? authLinks : guestLinks}
+      </ul>
       <div className="menu hide-on-med-and-down">
         {auth.authState.authenticated ? authLinks : guestLinks}
       </div>
-      <ul className="sidenav" id="mobile-demo">
-        {auth.authState.authenticated ? authLinks : guestLinks}
-      </ul>
     </nav>
   );
 };
+

@@ -1,5 +1,5 @@
 @import "materialize-css/dist/css/materialize.min.css";
-
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 nav {
   display: flex;
   gap: 10px;
@@ -86,6 +86,14 @@ nav {
 
   .sidenav .divider {
     margin: 8px 0;
+  }
+  #close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #4183f4;
   }
   .side-menu-query {
     display: none;

@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import "./styles/index.scss";
 import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
@@ -12,7 +12,7 @@ const renderApp = () => (
   <BrowserRouter>
     <React.StrictMode>
       <AuthContainer>
-      <App />
+        <App />
       </AuthContainer>
     </React.StrictMode>
   </BrowserRouter>

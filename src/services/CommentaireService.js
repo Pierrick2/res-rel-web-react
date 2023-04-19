@@ -1,4 +1,3 @@
-
 import RestClient from "./RestClient";
 
 export default class CommentaireService {
@@ -8,9 +7,11 @@ export default class CommentaireService {
   constructor() {
     this.restClient = new RestClient();
   }
-  
+
   async getCommentairesByRessourceId(idRessource) {
-    const response = await this.restClient.get(`${this.baseUrl}/${idRessource}`);
+    const response = await this.restClient.get(
+      `${this.baseUrl}/${idRessource}`
+    );
     return response.data;
   }
 

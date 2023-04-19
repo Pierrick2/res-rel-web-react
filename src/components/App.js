@@ -15,6 +15,7 @@ import Publication from "./Publication/Publication";
 import SideMenu from "./Navbar/SideMenu";
 
 
+
 function App() {
   const [isAuthenticated] = useState(true);
   return (

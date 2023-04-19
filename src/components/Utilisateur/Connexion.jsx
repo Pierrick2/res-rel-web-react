@@ -6,15 +6,21 @@ import { useNavigate } from "react-router-dom";
 
 export default function Connexion() {
   const auth = useAuth();
-  const navigate = useNavigate(); // initialisation de l'objet history
-  navigate('/ressources');
-  const handleSubmit = (e) => {
-  e.preventDefault();
-  const email = e.target.email.value;
-  const password = e.target.password.value;
-  auth.login(email, password, () => {});
-  console.log(email);
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    try {
+      await auth.login(email, password);
+      navigate('/ressources');
+    } catch (error) {
+      console.error(error);
+      alert('Erreur lors de l\'authentification');
+    }
   };
+
   return (
     <div className="login">
       <h4>Connexion</h4>

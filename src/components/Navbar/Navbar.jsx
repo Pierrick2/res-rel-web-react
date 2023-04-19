@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import logo from "../../assets/icon.png";
 import "../../styles/Navbar.scss";
 import M from 'materialize-css/dist/js/materialize.min.js';
 import NotificationContext from './Notifications';
+import { useAuth } from '../../services/AuthentificationService';
 
-const Navbar = ({ isAuthenticated }) => {
+export default function Navbar() {
+  const auth = useAuth();
 
   useEffect(() => {
     // Initialise le menu hamburger de Materialize
@@ -24,9 +26,10 @@ const Navbar = ({ isAuthenticated }) => {
         <NotificationContext />
       </li> */}
       <div className='side-menu-query'>
-      <Link to="/favoris">Mes Favoris</Link>
-          <Link to="/regarder-plus-tard">A regarder plus tard</Link>
-          <Link to="/mes-activites">Mes activités</Link>
+        <Link to="/favoris">Mes Favoris</Link>
+        <Link to="/regarder-plus-tard">A regarder plus tard</Link>
+        <Link to="/mes-activites">Mes activités</Link>
+        <button onClick={auth.logout}>Se déconnecter</button>
       </div>
     </>
   );
@@ -39,23 +42,19 @@ const Navbar = ({ isAuthenticated }) => {
   );
 
   return (
-    <div>
-      <nav>
-        <Link to="/">
-          <img src={logo} alt="Logo res rel" className="brand-logo" />
-        </Link>
-        <a href="#" data-target="mobile-demo" className="sidenav-trigger">
-          <i className="material-icons">menu</i>
-        </a>
-        <div className="menu hide-on-med-and-down">
-          {isAuthenticated ? authLinks : guestLinks}
-        </div>
-        <ul className="sidenav" id="mobile-demo">
-          {isAuthenticated ? authLinks : guestLinks}
-        </ul>
-      </nav>
-    </div>
+    <nav>
+      <Link to="/">
+        <img src={logo} alt="Logo res rel" className="brand-logo" />
+      </Link>
+      <a href="#" data-target="mobile-demo" className="sidenav-trigger">
+        <i className="material-icons">menu</i>
+      </a>
+      <div className="menu hide-on-med-and-down">
+        {auth.authState.authenticated ? authLinks : guestLinks}
+      </div>
+      <ul className="sidenav" id="mobile-demo">
+        {auth.authState.authenticated ? authLinks : guestLinks}
+      </ul>
+    </nav>
   );
 };
-
-export default Navbar;

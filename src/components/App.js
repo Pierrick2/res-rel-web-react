@@ -12,13 +12,15 @@ import Relations from "./Utilisateur/Relations";
 import Activites from "./Activites/Activites";
 import ActiviteUnique from "./Activites/ActiviteUnique";
 import Publication from "./Publication/Publication";
+import SideMenu from "./Navbar/SideMenu";
 
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [isAuthenticated] = useState(true);
   return (
     <div className="App">
       <Navbar isAuthenticated={isAuthenticated} />
+      <SideMenu isAuthenticated={isAuthenticated} />
       <Routes>
         <Route path="/" element={<ListeRessources />} />
         <Route path="/inscription" element={<Inscription />} />

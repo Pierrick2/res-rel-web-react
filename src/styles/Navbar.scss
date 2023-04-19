@@ -87,6 +87,9 @@ nav {
   .sidenav .divider {
     margin: 8px 0;
   }
+  .side-menu-query {
+    display: none;
+  }
 
   @media only screen and (max-width: 992px) {
     nav {
@@ -99,6 +102,9 @@ nav {
     }
     .menu {
       font-size: 12px;
+    }
+    .side-menu-query {
+      display: block;
     }
   }
 }

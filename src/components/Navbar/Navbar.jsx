@@ -23,6 +23,11 @@ const Navbar = ({ isAuthenticated }) => {
       {/* <li>
         <NotificationContext />
       </li> */}
+      <div className='side-menu-query'>
+      <Link to="/favoris">Mes Favoris</Link>
+          <Link to="/regarder-plus-tard">A regarder plus tard</Link>
+          <Link to="/mes-activites">Mes activités</Link>
+      </div>
     </>
   );
 

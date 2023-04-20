@@ -4,6 +4,7 @@ import PublicationService from "../../services/PublicationService";
 import "../../styles/AffichageRessources.scss";
 import "../../styles/BarreRecherche.scss"
 import { Link } from "react-router-dom";
+import Search from "../Navbar/SearchBar";
 
 export default function ListeRessources() {
   const [publications, setPublications] = useState([]);
@@ -27,11 +28,8 @@ export default function ListeRessources() {
 
   return (
     <div>
-      <div className="search-form">
-        <input type="text" placeholder="Rechercher une ressource, un auteur ..." value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)} />
-        <button type="submit">Rechercher</button>
-      </div>
-      <div className="search-form">
+      {/* <Search /> */}
+      <div className="filtre-form">
         <label htmlFor="categorieFilter">Filtrer par catégorie:</label>
         <select id="categorieFilter" value={selectedCategorie} onChange={(event) => setSelectedCategorie(event.target.value)}>
           <option value="">Toutes les catégories</option>

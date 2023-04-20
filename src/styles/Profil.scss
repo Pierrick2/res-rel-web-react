@@ -1,0 +1,61 @@
+.profile-page {
+    box-sizing: border-box;
+    width: 60%;
+    margin: 20px auto;
+    padding: 10px 30px;
+    box-shadow: lightgray 4px 4px 20px;
+  
+    img {
+        display: block;
+        margin: auto;
+        width: 100%;
+        max-width: 300px;
+        height: 300px;
+        margin-bottom: 20px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center center;
+      }
+      
+  
+    h1 {
+      margin-bottom: 0;
+    }
+  
+    p {
+      font-weight: 300;
+      font-size: 16px;
+    }
+  
+    @media screen and (max-width: 768px) {
+      width: 80%;
+      padding: 10px;
+  
+      h1 {
+        font-size: 24px;
+      }
+      
+      p {
+        font-size: 14px;
+      }
+    }
+  
+    @media screen and (max-width: 480px) {
+      width: 100%;
+      padding: 10px;
+      margin: 0;
+  
+      img {
+        width: 70%;
+      }
+  
+      h1 {
+        font-size: 20px;
+      }
+  
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+  

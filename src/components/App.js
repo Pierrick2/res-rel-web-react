@@ -13,6 +13,7 @@ import Activites from "./Activites/Activites";
 import ActiviteUnique from "./Activites/ActiviteUnique";
 import Publication from "./Publication/Publication";
 import SideMenu from "./Navbar/SideMenu";
+import Profil from "./Utilisateur/Profil";
 
 
 
@@ -36,6 +37,7 @@ function App() {
         <Route path="/activite-unique" element={<ActiviteUnique />} />
         <Route path="/publication" element={<Publication />} />
         <Route path="/parametres" element={<Parametres />} />
+        <Route path="/profil" element={<Profil />} />
         
       </Routes>
     </div>

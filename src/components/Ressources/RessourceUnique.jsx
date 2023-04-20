@@ -2,25 +2,46 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import PublicationService from "../../services/PublicationService";
 import "../../styles/AffichageRessources.scss";
-import "../../styles/RessourceUnique.scss"
+import "../../styles/RessourceUnique.scss";
 import CommentaireService from "../../services/CommentaireService";
 
 export default function RessourceUnique() {
   const [publication, setPublications] = useState([]);
   const [commentaires, setCommentaires] = useState([]);
+  const [nouveauCommentaire, setNouveauCommentaire] = useState("");
 
   const { id } = useParams();
 
   useEffect(() => {
     PublicationService.getPublication(id).then((publication) => {
       setPublications(publication);
-      CommentaireService.getCommentairesByRessourceId(id).then(
+      const params = {
+        "idRessource[equals]=": id,
+        include: "utilisateur",
+      }
+      CommentaireService.getCommentairesByRessourceId(params).then(
         (commentaires) => {
-          setCommentaires(commentaires);
+          setCommentaires(commentaires.data);
         }
       );
     });
   }, [id]);
+
+  const setNouveauCommentaireValue = (e) => {
+    setNouveauCommentaire(e.target.value);
+  };
+
+  const envoyerCommentaire = (e) => {
+    e.preventDefault();
+    const commentaire = {
+      contenu: nouveauCommentaire,
+      idUtilisateur: 1,
+      idRessource: id,
+    };
+    CommentaireService.addCommentaire(commentaire).then((commentaire) => {
+      setCommentaires([...commentaires, commentaire]);
+    });
+  };
 
   if (!publication) return null;
   return (
@@ -31,14 +52,21 @@ export default function RessourceUnique() {
         {publication.idUtilisateur}
       </p>
       {publication.contenu && (
-        <img src="https://picsum.photos/200/300" alt="Image de la publication" />
+        <img
+          src="https://picsum.photos/200/300"
+          alt="Image de la publication"
+        />
       )}
       <p>{publication.contenu}</p>
       <p>Catégorie {publication.idCategorie}</p>
       <textarea
-          placeholder="Votre commentaire..."
-        ></textarea>
-      <button className="comment-btn">Commenter</button>
+        value={nouveauCommentaire}
+        onChange={setNouveauCommentaireValue}
+        placeholder="Votre commentaire..."
+      ></textarea>
+      <button onClick={envoyerCommentaire} className="comment-btn">
+        Commenter
+      </button>
       {commentaires.length > 0 && (
         <div>
           {commentaires.map((commentaire) => (

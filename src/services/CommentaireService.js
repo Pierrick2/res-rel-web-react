@@ -1,24 +1,26 @@
-
 import RestClient from "./RestClient";
 
-export default class CommentaireService {
+class CommentaireService {
   baseUrl = "commentaires";
   restClient;
 
   constructor() {
     this.restClient = new RestClient();
   }
-  
-  async getCommentairesByRessourceId(idRessource) {
-    const response = await this.restClient.get(`${this.baseUrl}/${idRessource}`);
-    return response.data;
+
+  async getCommentairesByRessourceId(params = {}) {
+    const response = await this.restClient.get(
+      this.baseUrl, params
+    );
+    return response;
   }
 
-  async addCommentaire(commentaire) {
-    const response = await this.restClient.post(this.baseUrl, commentaire);
-    return response.data;
+  async addCommentaire(params = {}) {
+    const response = await this.restClient.post(this.baseUrl, params);
+    return response;
   }
 
+  // a revoir
   async updateCommentaire(commentaire) {
     const response = await this.restClient.put(
       `${this.baseUrl}/${commentaire.id}`,
@@ -32,3 +34,5 @@ export default class CommentaireService {
     return response.data;
   }
 }
+
+export default new CommentaireService();

@@ -2,6 +2,7 @@ import axios from "axios";
 
 export default class RestClient {
   baseUrl = "https://api.victor-gombert.fr/api/v1/";
+  token = "1|x6Y5BDn2kEBOHe1UATIejquEZFnP6zhbOhJRNpLT";
 
   async get(path, params) {
     const url = this.baseUrl + path;
@@ -16,11 +17,15 @@ export default class RestClient {
 
   async post(path, body) {
     const url = this.baseUrl + path;
-    const response = await axios.post(url, body);
+    const response = await axios.post(url, body, {
+      headers: {
+        Authorization: `Bearer ${this.token}`,
+      },
+    });
     if (response.status >= 200 && response.status < 300) {
       return response.data;
     } else {
-      throw new Error(response.data.error || "Something went wrong");
+      throw new Error(response.data.error || "Une erreur est survenue");
     }
   }
 

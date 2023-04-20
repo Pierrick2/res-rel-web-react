@@ -15,9 +15,13 @@ export default function RessourceUnique() {
   useEffect(() => {
     PublicationService.getPublication(id).then((publication) => {
       setPublications(publication);
-      CommentaireService.getCommentairesByRessourceId(Number(id)).then(
+      const params = {
+        "idRessource[equals]=": id,
+        include: "utilisateur",
+      }
+      CommentaireService.getCommentairesByRessourceId(params).then(
         (commentaires) => {
-          setCommentaires(commentaires);
+          setCommentaires(commentaires.data);
         }
       );
     });

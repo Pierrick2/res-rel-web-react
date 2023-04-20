@@ -62,10 +62,12 @@ export default function Navbar() {
             </a>
           </div>
         </li>
-        {auth.authState.authenticated ? authLinks : guestLinks}
+        {/* {auth.authState.authenticated ? authLinks : guestLinks} */}
+        {auth ? authLinks : guestLinks}
       </ul>
       <div className="menu hide-on-med-and-down">
-        {auth.authState.authenticated ? authLinks : guestLinks}
+        {/* {auth.authState.authenticated ? authLinks : guestLinks} */}
+        {auth ? authLinks : guestLinks}
       </div>
     </nav>
   );

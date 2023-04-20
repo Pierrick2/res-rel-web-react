@@ -52,6 +52,12 @@ export default function ListeRessources() {
             <p>{publication.contenu}</p>
             <p>Catégorie {publication.idCategorie}</p>
             <div>
+              <button className="icon">
+              <img  src="https://upload.wikimedia.org/wikipedia/commons/5/57/FA_star.svg" alt="Bouton de mise en favoris" />
+              </button>
+              <button className="icon">
+              <img  src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Clock_%2889654%29_-_The_Noun_Project.svg" alt="Bouton de mise de côté" />
+              </button>
               <Link to={`/ressources/${publication.id}`}>
                 <button>Voir plus</button>
               </Link>

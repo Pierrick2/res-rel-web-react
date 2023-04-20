@@ -10,7 +10,7 @@ export default function () {
       </div>
       <div className="search-results">
         <div className="search-result">
-          <img src="https://via.placeholder.com/150" alt="Photo de profil" />
+          <img src="https://pbs.twimg.com/media/EPNM3xQWkAAfRWD?format=jpg&name=large" alt="Photo de profil" />
           <p>Nom de la personne</p>
           <div className="buttons">
             <button className="btn-see-ressource">Voir ressource</button>
@@ -18,7 +18,7 @@ export default function () {
           </div>
         </div>
         <div className="search-result">
-          <img src="https://via.placeholder.com/150" alt="Photo de profil" />
+          <img src="https://pbs.twimg.com/media/EPNM3xQWkAAfRWD?format=jpg&name=large" alt="Photo de profil" />
           <p>Nom de la personne</p>
           <div className="buttons">
             <button className="btn-see-ressource">Voir ressource</button>
@@ -26,7 +26,7 @@ export default function () {
           </div>
         </div>
         <div className="search-result">
-          <img src="https://via.placeholder.com/150" alt="Photo de profil" />
+          <img src="https://pbs.twimg.com/media/EPNM3xQWkAAfRWD?format=jpg&name=large" alt="Photo de profil" />
           <p>Nom de la personne</p>
           <div className="buttons">
             <button className="btn-see-ressource">Voir ressource</button>

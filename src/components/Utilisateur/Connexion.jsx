@@ -33,6 +33,10 @@ export default function Connexion() {
           <label htmlFor="password">Mot de passe :</label>
           <input type="password" id="password" name="password" required />
         </div>
+      <div className="aides">
+        <a href="/">Mot de passe oublié</a>
+        <a href="/">Centre d'aide</a>
+      </div>
         <button type="submit">Se connecter</button>
       </form>
     </div>

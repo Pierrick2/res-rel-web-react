@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from "../../assets/icon.png";
 import "../../styles/Navbar.scss";
@@ -7,7 +7,9 @@ import NotificationContext from './Notifications';
 import { useAuth } from '../../services/AuthentificationService';
 
 export default function Navbar() {
-  const auth = useAuth();
+ const auth = useAuth(true);
+
+
 
   useEffect(() => {
     // Initialise le menu hamburger de Materialize
@@ -28,7 +30,7 @@ export default function Navbar() {
       <div className='side-menu-query'>
         <Link to="/favoris">Mes Favoris</Link>
         <Link to="/regarder-plus-tard">A regarder plus tard</Link>
-        <Link to="/mes-activites">Mes activités</Link>
+        <Link to="profil">Mon Profil</Link>
         <button onClick={auth.logout}>Se déconnecter</button>
       </div>
     </>

@@ -1,17 +1,29 @@
-.ressource-card {
-    // styles pour la zone de commentaire
+.commentaire {
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  
+  p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .repondre-commentaire {
+    margin-top: 10px;
+    
     textarea {
       width: 100%;
-      height: 120px;
-      margin-bottom: 20px;
+      height: 80px;
+      margin-bottom: 10px;
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 4px;
       resize: none;
     }
     
-    // styles pour le bouton Commenter
-    .comment-btn {
+    button {
       background-color: #4183f4;
       color: #fff;
       font-size: 16px;
@@ -31,12 +43,5 @@
         background-color: #ffd034;
       }
     }
-    
-    // media query pour les petits écrans
-    @media only screen and (max-width: 767px) {
-      textarea {
-        height: 80px;
-      }
-    }
   }
-  
+}

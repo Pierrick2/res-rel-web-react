@@ -14,6 +14,7 @@ import ActiviteUnique from "./Activites/ActiviteUnique";
 import Publication from "./Publication/Publication";
 import SideMenu from "./Navbar/SideMenu";
 import Profil from "./Utilisateur/Profil";
+import Favoris from "./Ressources/Favoris";
 
 
 
@@ -38,6 +39,7 @@ function App() {
         <Route path="/publication" element={<Publication />} />
         <Route path="/parametres" element={<Parametres />} />
         <Route path="/profil" element={<Profil />} />
+        <Route path="/favoris" element={<Favoris/>} />
         
       </Routes>
     </div>

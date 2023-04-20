@@ -4,11 +4,13 @@ import PublicationService from "../../services/PublicationService";
 import "../../styles/AffichageRessources.scss";
 import "../../styles/RessourceUnique.scss";
 import CommentaireService from "../../services/CommentaireService";
+import UtilisateurService from "../../services/UtilisateurService";
 
 export default function RessourceUnique() {
   const [publication, setPublications] = useState([]);
   const [commentaires, setCommentaires] = useState([]);
   const [nouveauCommentaire, setNouveauCommentaire] = useState("");
+  const [utilisateurs, setUtilisateurs] = useState([]);
 
   const { id } = useParams();
 
@@ -16,12 +18,20 @@ export default function RessourceUnique() {
     PublicationService.getPublication(id).then((publication) => {
       setPublications(publication);
       const params = {
-        "idRessource[equals]=": id,
+        "idRessource[equals]": id,
         include: "utilisateur",
-      }
+      };
       CommentaireService.getCommentairesByRessourceId(params).then(
         (commentaires) => {
           setCommentaires(commentaires.data);
+          const userIds = commentaires.data.map(
+            (commentaire) => commentaire.idUtilisateur
+          );
+          UtilisateurService.getUtilisateursByIds(userIds).then(
+            (utilisateurs) => {
+              setUtilisateurs(utilisateurs.data);
+            }
+          );
         }
       );
     });
@@ -43,13 +53,18 @@ export default function RessourceUnique() {
     });
   };
 
+  const getNomUtilisateur = (idUtilisateur) => {
+    const utilisateur = utilisateurs.find((utilisateur) => utilisateur.id === idUtilisateur);
+    return utilisateur ? utilisateur.nom : "";
+  };
+
   if (!publication) return null;
   return (
     <div className="ressource-card">
       <h2>{publication.titre}</h2>
       <p>
         Mis en ligne le {publication.dateCreation} par{" "}
-        {publication.idUtilisateur}
+        {getNomUtilisateur(publication.idUtilisateur)}
       </p>
       {publication.contenu && (
         <img
@@ -69,14 +84,19 @@ export default function RessourceUnique() {
       </button>
       {commentaires.length > 0 && (
         <div>
-          {commentaires.map((commentaire) => (
-            <div key={commentaire.id}>
-              <p>"{commentaire.contenu}"</p>
-              <p>Posté par {commentaire.idUtilisateur}</p>
-              <p>Le {commentaire.dateCreation}</p>
-            </div>
-          ))}
-        </div>
+  {commentaires.map((commentaire) => (
+    <div key={commentaire.id} className="commentaire">
+      <p>"{commentaire.contenu}"</p>
+      <p>Posté par {getNomUtilisateur(commentaire.idUtilisateur)}</p>
+      <p>Le {commentaire.datePublication}</p>
+      <div className="repondre-commentaire">
+        <textarea placeholder="Votre réponse"></textarea>
+        <button>Valider</button>
+      </div>
+    </div>
+  ))}
+</div>
+
       )}
     </div>
   );

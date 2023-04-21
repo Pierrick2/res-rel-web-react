@@ -150,4 +150,12 @@ nav ul a {
   font-size: 10px; 
   padding: 6px 12px; 
   border-radius: 4px;
+  background-color: #4183f4;
+  border: #4183f4;
+  color: #eee;
+
+  &:hover{
+    background-color: #2c59a7;
+    transition: all 0.3s ease-in-out;
+  }
 }

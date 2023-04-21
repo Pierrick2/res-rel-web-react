@@ -9,7 +9,7 @@ import Search from "../Navbar/SearchBar";
 export default function ListeRessources() {
   const [publications, setPublications] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   React.useEffect(() => {
     PublicationService.getAllPublications().then((publications) => {
@@ -23,9 +23,11 @@ export default function ListeRessources() {
   }
   const filteredPublications = publications.filter((publication) =>
   publication.titre.toLowerCase().includes(searchTerm.toLowerCase()) ||
-  publication.auteur.toLowerCase().includes(searchTerm.toLowerCase()) 
+  publication.auteur.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  publication.idCategorie === selectedCategory
 );
 
+  const handleCategoryChange = (event) => {setSelectedCategory(event.target.value);};
   return (
     <div>
       <div className="search-form">
@@ -34,7 +36,7 @@ export default function ListeRessources() {
       </div>
       <div className="search-form">
         <label htmlFor="categorieFilter">Filtrer par catégorie:</label>
-        <select id="categorieFilter">
+        <select id="categorieFilter" onChange={handleCategoryChange} value={selectedCategory}>
           <option value="">Toutes les catégories</option>
           <option value="1">Catégorie 1</option>
           <option value="2">Catégorie 2</option>
@@ -52,16 +54,20 @@ export default function ListeRessources() {
             <img src="https://picsum.photos/200/300" alt="Image de la publication" />
             <p>{publication.contenu}</p>
             <p>Catégorie {publication.idCategorie}</p>
-            <div>
+            <div className="interactions">
               <button className="icon" aria-label="mettre en favoris">
               <img  src="https://upload.wikimedia.org/wikipedia/commons/5/57/FA_star.svg" alt="Bouton de mise en favoris" />
               </button>
               <button className="icon" aria-label="sauvegarder pour plus tard">
               <img  src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Clock_%2889654%29_-_The_Noun_Project.svg" alt="Bouton de mise de côté" />
               </button>
+              
+              <button className="voir-plus">
               <Link to={`/ressources/${publication.id}`}>
-                <button>Voir plus</button>
+                Voir plus
               </Link>
+              </button>
+              
             </div>
           </div>
         </div>

@@ -48,9 +48,11 @@ function ProfilePage() {
 
   return (
     <div className="profile-page">
-      <h1>Mon Profil</h1>
+      <h3>Mon Profil</h3>
       <img className={classes.profileImg} src={photo} alt="Ma photo de profil" />
+      
       <form onSubmit={handleSave}>
+        <p>Modifier ma photo de profil : </p>
         <Input
           type="file"
           accept="image/*"
@@ -58,6 +60,7 @@ function ProfilePage() {
           margin="normal"
         />
         <br />
+        <p>Ajouter ou modifier ma biographie</p>
         <TextField
           label="Biographie"
           variant="outlined"
@@ -69,10 +72,10 @@ function ProfilePage() {
         />
         <br />
         <Button variant="contained" color="primary" type="submit">
-          Enregistrer
+          Enregistrer les changements
         </Button>
       </form>
-      <h2>Mon activité</h2>
+      <h3>Mon activité</h3>
       <p>Voici un résumé de votre activité :</p>
       <ul>
         <li>Ressources en favoris : 12</li>

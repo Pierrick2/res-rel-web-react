@@ -1,35 +1,106 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../styles/Parametres.scss";
 import "../../styles/Card.scss";
-//import { Switch } from "@mui/material";
-
 
 export default function Parametres() {
+  const [darkMode, setDarkMode] = useState(false);
+  const [daltonism, setDaltonism] = useState(false);
+  const [audioDescription, setAudioDescription] = useState(false);
+  const [textSize, setTextSize] = useState(100);
+  const [contrast, setContrast] = useState(false);
+  const [spacing, setSpacing] = useState(false);
+
+  const handleDarkModeChange = () => {
+    setDarkMode(!darkMode);
+  };
+
+  const handleDaltonismChange = () => {
+    setDaltonism(!daltonism);
+  };
+
+  const handleAudioDescriptionChange = () => {
+    setAudioDescription(!audioDescription);
+  };
+
+  const handleTextSizeIncrease = () => {
+    setTextSize(textSize + 10);
+  };
+
+  const handleTextSizeDecrease = () => {
+    setTextSize(textSize - 10);
+  };
+
+  const handleContrastChange = () => {
+    setContrast(!contrast);
+  };
+
+  const handleSpacingChange = () => {
+    setSpacing(!spacing);
+  };
+
   return (
-    <div className="card">
-    <h4>Paramètres</h4>
-    <h6>Personnalisez votre profil : </h6>
-    <form>
-      <div className="form-group">
-        <label htmlFor="photo">Photo de profil :</label>
-        <input type="file" id="photo" name="photo" accept="image/*" />
+    <div className="parametres-container">
+      <h2>Paramètres</h2>
+      <div className="parametre">
+        <p>Mode sombre</p>
+        <label className="switch">
+          <input
+            type="checkbox"
+            checked={darkMode}
+            onChange={handleDarkModeChange}
+          />
+          <span className="slider round"></span>
+        </label>
       </div>
-      <div className="form-group">
-        <label htmlFor="bio">Biographie :</label>
-        <textarea id="bio" name="bio"></textarea>
+      <div className="parametre">
+        <p>Daltonisme</p>
+        <label className="switch">
+          <input
+            type="checkbox"
+            checked={daltonism}
+            onChange={handleDaltonismChange}
+          />
+          <span className="slider round"></span>
+        </label>
       </div>
-      <div className="form-group">
-        <label htmlFor="dark-mode">Mode sombre :</label>
-        {/* <Switch
-          id="dark-mode"
-          checked={darkMode}
-          onChange={handleDarkModeChange}
-        /> */}
+      <div className="parametre">
+        <p>Navigation audio</p>
+        <label className="switch">
+          <input
+            type="checkbox"
+            checked={audioDescription}
+            onChange={handleAudioDescriptionChange}
+          />
+          <span className="slider round"></span>
+        </label>
       </div>
-      <button type="submit" >
-        Enregistrer
-      </button>
-    </form>
-  </div>
+      <div className="parametre-taille">
+        <p>Taille du texte : {textSize}%</p>
+        <button onClick={handleTextSizeDecrease}>-</button>
+        <button onClick={handleTextSizeIncrease}>+</button>
+      </div>
+      <div className="parametre">
+        <p>Contraste</p>
+        <label className="switch">
+          <input
+            type="checkbox"
+            checked={contrast}
+            onChange={handleContrastChange}
+          />
+          <span className="slider round"></span>
+        </label>
+      </div>
+      <div className="parametre">
+        <p>Espacement des caractères et des lignes</p>
+        <label className="switch">
+          <input
+            type="checkbox"
+            checked={spacing}
+            onChange={handleSpacingChange}
+          />
+          <span className="slider round"></span>
+        </label>
+      </div>
+    </div>
   );
 }

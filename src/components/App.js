@@ -17,6 +17,7 @@ import Profil from "./Utilisateur/Profil";
 import Favoris from "./Ressources/Favoris";
 import AvoirPlusTard from "./Ressources/AvoirPlusTard";
 import Statistiques from "./Ressources/Statistiques";
+import Notifications from "./Navbar/Notifications";
 
 
 
@@ -44,6 +45,7 @@ function App() {
         <Route path="/favoris" element={<Favoris/>} />
         <Route path="/a-regarder-plus-tard" element={<AvoirPlusTard/>} />
         <Route path="/statistiques" element={<Statistiques/>} />
+        <Route path="/notifications" element={<Notifications />} />
         
       </Routes>
     </div>

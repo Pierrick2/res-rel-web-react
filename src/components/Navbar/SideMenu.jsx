@@ -9,9 +9,10 @@ const SideMenu = ({ isAuthenticated }) => {
 
   return (
     <div className='side-menu'>
+      <Link to="/profil">Mon Profil</Link>
       <Link to="/favoris">Mes Favoris</Link>
       <Link to="/regarder-plus-tard">A regarder plus tard</Link>
-      <Link to="/profil">Mon Profil</Link>
+      <Link to="/parametres">Paramètres</Link>
     </div>
   );
 }

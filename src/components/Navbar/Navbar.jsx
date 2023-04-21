@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from "../../assets/icon.png";
 import "../../styles/Navbar.scss";
-import M from 'materialize-css/dist/js/materialize.min.js';
+import M from "materialize-css/dist/js/materialize.min.js";
 import NotificationContext from './Notifications';
 import { useAuth } from '../../services/AuthentificationService';
 
@@ -23,7 +23,7 @@ export default function Navbar() {
       <Link to="/creation-ressource">Créer une ressource</Link>
       {/* <Link to="/creation-activite">Créer une activité</Link> */}
       <Link to="/relations">Mes relations</Link>
-      <Link to="/parametres">Paramètres</Link>
+      
       {/* <li>
         <NotificationContext />
       </li> */}
@@ -32,6 +32,7 @@ export default function Navbar() {
         <Link to="/regarder-plus-tard">A regarder plus tard</Link>
         <Link to="profil">Mon Profil</Link>
         <button onClick={auth.logout}>Se déconnecter</button>
+        
       </div>
     </>
   );
@@ -68,6 +69,10 @@ export default function Navbar() {
       <div className="menu hide-on-med-and-down">
         {/* {auth.authState.authenticated ? authLinks : guestLinks} */}
         {auth ? authLinks : guestLinks}
+      </div>
+      <div className="profile-container">
+      <img src="https://pbs.twimg.com/media/EPNM3xQWkAAfRWD?format=jpg&name=large" alt="Photo de profil" className="profile-picture" />
+      <button onClick={auth.logout} className="btn-deconnexion">Se déconnecter</button>
       </div>
     </nav>
   );

@@ -12,6 +12,9 @@ nav {
   width: 100%;
   z-index: 999;
   padding: 0 12px;
+  
+
+
   a {
     color: #4183f4;
     text-decoration: none;
@@ -99,6 +102,8 @@ nav {
     display: none;
   }
 
+  
+
   @media only screen and (max-width: 992px) {
     nav {
       padding: 0 16px;
@@ -122,4 +127,27 @@ body {
 
 nav ul a {
   color: #4183f4;
+}
+
+
+.profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-left: auto;
+}
+
+.profile-picture {
+  margin-left: 0;
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center center;
+}
+.btn-deconnexion {
+  font-size: 10px; 
+  padding: 6px 12px; 
+  border-radius: 4px;
 }

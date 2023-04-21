@@ -27,11 +27,14 @@ export default function ActiviteUnique() {
       <div>
         <p>Nombre d'invités: 2</p>
       </div>
-      <div className="inscription-button">
-        <Link to="http://localhost:3000/activites">S'inscrire</Link>
-        <div>
-          <Link to="http://localhost:3000/relations">Inviter des relations</Link>
+      <div className='activity-buttons'>
+      <div className="btn-inscription">
+        <a href="http://localhost:3000/activites">S'inscrire</a>
         </div>
+        <div className='btn-invitations'>
+          <a href="http://localhost:3000/relations">Inviter des relations</a>
+          </div>
+        
       </div>
     </div>
   );

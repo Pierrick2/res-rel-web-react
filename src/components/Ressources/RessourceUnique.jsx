@@ -59,13 +59,15 @@ export default function RessourceUnique() {
   };
 
   if (!publication) return null;
+
   return (
     <div className="ressource-card">
-      <h2>{publication.titre}</h2>
-      <p>
+      <p className="infos-ressources">
         Mis en ligne le {publication.dateCreation} par{" "}
         {getNomUtilisateur(publication.idUtilisateur)}
       </p>
+      <h2>{publication.titre}</h2>
+
       {publication.contenu && (
         <img
           src="https://picsum.photos/200/300"
@@ -74,6 +76,21 @@ export default function RessourceUnique() {
       )}
       <p>{publication.contenu}</p>
       <p>Catégorie {publication.idCategorie}</p>
+      <div className="interactions">
+        <button className="icon" aria-label="mettre en favoris">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/FA_star.svg" alt="Bouton de mise en favoris" />
+        </button>
+        <button className="icon" aria-label="sauvegarder pour plus tard">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Clock_%2889654%29_-_The_Noun_Project.svg" alt="Bouton de mise de côté" />
+        </button>
+        <button className="icon" aria-label="partager">
+          <img src="https://www.svgrepo.com/show/122182/share-button.svg" alt="Bouton de partage" />
+        </button>
+        <button className="icon" aria-label="editer">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Edit_icon_%28the_Noun_Project_30184%29.svg/1024px-Edit_icon_%28the_Noun_Project_30184%29.svg.png" alt="Bouton d'édition'" />
+        </button>
+
+      </div>
       <textarea
         value={nouveauCommentaire}
         onChange={setNouveauCommentaireValue}
@@ -84,18 +101,18 @@ export default function RessourceUnique() {
       </button>
       {commentaires.length > 0 && (
         <div>
-  {commentaires.map((commentaire) => (
-    <div key={commentaire.id} className="commentaire">
-      <p>"{commentaire.contenu}"</p>
-      <p>Posté par {getNomUtilisateur(commentaire.idUtilisateur)}</p>
-      <p>Le {commentaire.datePublication}</p>
-      <div className="repondre-commentaire">
-        <textarea placeholder="Votre réponse"></textarea>
-        <button>Valider</button>
-      </div>
-    </div>
-  ))}
-</div>
+          {commentaires.map((commentaire) => (
+            <div key={commentaire.id} className="commentaire">
+              <p>"{commentaire.contenu}"</p>
+              <p>Posté par {getNomUtilisateur(commentaire.idUtilisateur)}</p>
+              <p>Le {commentaire.datePublication}</p>
+              <div className="repondre-commentaire">
+                <textarea placeholder="Votre réponse"></textarea>
+                <button>Valider</button>
+              </div>
+            </div>
+          ))}
+        </div>
 
       )}
     </div>

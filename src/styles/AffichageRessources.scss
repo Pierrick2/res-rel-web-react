@@ -90,7 +90,24 @@ button {
   }
 }
 }
-
+.infos-ressources {
+  font-size: 12px; 
+  text-align: right; 
+  color: gray; 
+}
+.comment-btn {
+  background-color: #4183f4;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 6px;
+}
   @media screen and (max-width: 768px) {
     .ressource-card {
       width: 80%;

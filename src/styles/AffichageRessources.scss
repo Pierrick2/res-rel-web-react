@@ -55,6 +55,7 @@
 }
 .interactions {
   display: flex;
+  justify-content: space-between;
 button { 
   background-color: #4183f4;
   color: #fff;
@@ -95,6 +96,13 @@ button {
   text-align: right; 
   color: gray; 
 }
+.infos-ressources img {
+  width: 16px; 
+  height: 16px;
+  vertical-align: middle; 
+  margin-right: 5px; 
+}
+
 .comment-btn {
   background-color: #4183f4;
     color: #fff;
@@ -136,4 +144,21 @@ button {
       font-size: 14px;
       }
       }
+}
+.moderation-ressource {
+  background-color: #ff9999;
+  display: flex;
+  
+}
+.btn-commentaires {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+.moderation-commentaire {
+  background-color: #ff9999;
+  
+  padding: 10px;
+  margin: 10px;
 }

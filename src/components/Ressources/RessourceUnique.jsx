@@ -62,10 +62,13 @@ export default function RessourceUnique() {
 
   return (
     <div className="ressource-card">
-      <p className="infos-ressources">
-        Mis en ligne le {publication.dateCreation} par{" "}
-        {getNomUtilisateur(publication.idUtilisateur)}
-      </p>
+      <div className="ressource-card-header">
+        <p className="infos-ressources">
+          <img src="https://www.svgrepo.com/download/169312/check-mark.svg" alt="marqueur d'exploitation" />
+          Mis en ligne le {publication.dateCreation} par{" "}
+          {getNomUtilisateur(publication.idUtilisateur)}
+        </p>
+      </div>
       <h2>{publication.titre}</h2>
 
       {publication.contenu && (
@@ -89,7 +92,13 @@ export default function RessourceUnique() {
         <button className="icon" aria-label="editer">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Edit_icon_%28the_Noun_Project_30184%29.svg/1024px-Edit_icon_%28the_Noun_Project_30184%29.svg.png" alt="Bouton d'édition'" />
         </button>
-
+        <div className="moderation-ressource">
+          <button className="icon" aria-label="refuser">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Red_X.svg/1024px-Red_X.svg.png" alt="Bouton d'édition'" />
+          </button><button className="icon" aria-label="valider">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Feedbin-Icon-check.svg/1200px-Feedbin-Icon-check.svg.png" alt="Bouton de validation de ressource" />
+          </button>
+        </div>
       </div>
       <textarea
         value={nouveauCommentaire}
@@ -108,7 +117,14 @@ export default function RessourceUnique() {
               <p>Le {commentaire.datePublication}</p>
               <div className="repondre-commentaire">
                 <textarea placeholder="Votre réponse"></textarea>
-                <button>Valider</button>
+                <div className="btn-commentaires">
+                  <div>
+                    <button >Répondre</button>
+                  </div>
+                  <div className="moderation-commentaire">
+                    <button>Modérer</button>
+                  </div>
+                </div>
               </div>
             </div>
           ))}

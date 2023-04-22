@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import RessourceUnique from "./Ressources/RessourceUnique";
 import Navbar from "../components/Navbar/Navbar";
@@ -18,8 +18,7 @@ import Favoris from "./Ressources/Favoris";
 import AvoirPlusTard from "./Ressources/AvoirPlusTard";
 import Statistiques from "./Ressources/Statistiques";
 import Notifications from "./Navbar/Notifications";
-
-
+import AdminStats from "./Statistiques/AdminStats";
 
 function App() {
   const [isAuthenticated] = useState(true);
@@ -42,11 +41,11 @@ function App() {
         <Route path="/publication" element={<Publication />} />
         <Route path="/parametres" element={<Parametres />} />
         <Route path="/profil" element={<Profil />} />
-        <Route path="/favoris" element={<Favoris/>} />
-        <Route path="/a-regarder-plus-tard" element={<AvoirPlusTard/>} />
-        <Route path="/statistiques" element={<Statistiques/>} />
+        <Route path="/favoris" element={<Favoris />} />
+        <Route path="/a-regarder-plus-tard" element={<AvoirPlusTard />} />
+        <Route path="/statistiques" element={<Statistiques />} />
         <Route path="/notifications" element={<Notifications />} />
-        
+        <Route path="/admin-stats" element={<AdminStats />} />
       </Routes>
     </div>
   );

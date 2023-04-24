@@ -19,6 +19,7 @@ import AvoirPlusTard from "./Ressources/AvoirPlusTard";
 import Statistiques from "./Ressources/Statistiques";
 import Notifications from "./Navbar/Notifications";
 import AdminStats from "./Statistiques/AdminStats";
+import Administration from "./Utilisateur/Administration";
 
 function App() {
   const [isAuthenticated] = useState(true);
@@ -42,11 +43,13 @@ function App() {
         <Route path="/publication" element={<Publication />} />
         <Route path="/parametres" element={<Parametres />} />
         <Route path="/profil" element={<Profil />} />
-        <Route path="/favoris" element={<Favoris />} />
+        {/* <Route path="/favoris" element={<Favoris />} /> */}
         <Route path="/a-regarder-plus-tard" element={<AvoirPlusTard />} />
         <Route path="/statistiques" element={<Statistiques />} />
         <Route path="/notifications" element={<Notifications />} />
         <Route path="/admin-stats" element={<AdminStats />} />
+        <Route path="/administration" element={<Administration />} />
+
       </Routes>
     </div>
   );

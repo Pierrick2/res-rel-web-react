@@ -10,6 +10,7 @@ function BarreRecherche() {
 
   const [searchValue, setSearchValue] = useState("");
   const [afficheHeader, setAfficheHeader] = useState(true);
+  const [noResults, setNoResults] = useState(false);
 
   const filtres = new BehaviorSubject({});
 
@@ -27,6 +28,7 @@ function BarreRecherche() {
   }, []);
 
   const startSearch = () => {
+    setNoResults(false);
     if (searchValue !== "") {
       const params = {
         query: {
@@ -44,8 +46,12 @@ function BarreRecherche() {
         },
       };
       RechercheService.Chercher(params).then((listeResultats) => {
-        RechercheService.SetListeResRessources(listeResultats.ressources);
-        RechercheService.SetListeResUtilisateurs(listeResultats.utilisateurs);
+        if (listeResultats.ressources.length === 0 && listeResultats.utilisateurs.length === 0) {
+          setNoResults(true);
+        } else {
+          RechercheService.SetListeResRessources(listeResultats.ressources);
+          RechercheService.SetListeResUtilisateurs(listeResultats.utilisateurs);
+        }
       });
     } else {
       const filtresRequete = {
@@ -86,6 +92,11 @@ function BarreRecherche() {
         />
         <button onClick={startSearch} type="button">Rechercher</button>
       </div>
+      {noResults && (
+        <div className="no-results-message">
+          Aucun résultat trouvé.
+        </div>
+      )}
     </>
   )
 }

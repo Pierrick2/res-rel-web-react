@@ -28,6 +28,12 @@ export default function SideMenu({ isAuthenticated }) {
           <Link to="/favoris">Mes Favoris</Link>
           <Link to="/regarder-plus-tard">A regarder plus tard</Link>
           <Link to="/parametres">Paramètres</Link>
+          {selectedRole === 4 && (
+            <>
+              <Link to="/adimistration">Administration</Link>
+              <Link to="/admin-stats">Statistiques</Link>
+            </>
+          )}
         </div>
       )}
     </>

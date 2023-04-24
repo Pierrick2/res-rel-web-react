@@ -5,14 +5,22 @@ import "../../styles/AffichageRessources.scss";
 import "../../styles/RessourceUnique.scss";
 import CommentaireService from "../../services/CommentaireService";
 import UtilisateurService from "../../services/UtilisateurService";
+import { IonIcon } from "@ionic/react";
 
 export default function RessourceUnique() {
   const [publication, setPublications] = useState([]);
   const [commentaires, setCommentaires] = useState([]);
   const [nouveauCommentaire, setNouveauCommentaire] = useState("");
   const [utilisateurs, setUtilisateurs] = useState([]);
+  const [selectedRole, setSelectedRole] = useState(0);
 
   const { id } = useParams();
+
+  useEffect(() => {
+    UtilisateurService.getRoleUtilisateur().subscribe((role) => {
+      setSelectedRole(Number(role));
+    });
+  }, []);
 
   useEffect(() => {
     PublicationService.getPublication(id).then((publication) => {
@@ -61,76 +69,98 @@ export default function RessourceUnique() {
   if (!publication) return null;
 
   return (
-    <div className="ressource-card">
-      <div className="ressource-card-header">
-        <p className="infos-ressources">
-          <img src="https://www.svgrepo.com/download/169312/check-mark.svg" alt="marqueur d'exploitation" />
-          Mis en ligne le {publication.dateCreation} par{" "}
-          {getNomUtilisateur(publication.idUtilisateur)}
-        </p>
-      </div>
-      <h2>{publication.titre}</h2>
-
-      {publication.contenu && (
-        <img
-          src="https://picsum.photos/200/300"
-          alt="Image de la publication"
-        />
-      )}
-      <p>{publication.contenu}</p>
-      <p>Catégorie {publication.idCategorie}</p>
-      <div className="interactions">
-        <button className="icon" aria-label="mettre en favoris">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/FA_star.svg" alt="Bouton de mise en favoris" />
-        </button>
-        <button className="icon" aria-label="sauvegarder pour plus tard">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Clock_%2889654%29_-_The_Noun_Project.svg" alt="Bouton de mise de côté" />
-        </button>
-        <button className="icon" aria-label="partager">
-          <img src="https://www.svgrepo.com/show/122182/share-button.svg" alt="Bouton de partage" />
-        </button>
-        <button className="icon" aria-label="editer">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Edit_icon_%28the_Noun_Project_30184%29.svg/1024px-Edit_icon_%28the_Noun_Project_30184%29.svg.png" alt="Bouton d'édition'" />
-        </button>
-        <div className="moderation-ressource">
-          <button className="icon" aria-label="refuser">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Red_X.svg/1024px-Red_X.svg.png" alt="Bouton d'édition'" />
-          </button><button className="icon" aria-label="valider">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Feedbin-Icon-check.svg/1200px-Feedbin-Icon-check.svg.png" alt="Bouton de validation de ressource" />
-          </button>
+    <>
+      <div className="ressource-card">
+        <div className="ressource-card-header">
+          <p className="infos-ressources">
+            {selectedRole !== 0 && (
+              <img src="https://www.svgrepo.com/download/169312/check-mark.svg" alt="marqueur d'exploitation" />
+            )}
+            Mis en ligne le {publication.dateCreation} par{" "}
+            {getNomUtilisateur(publication.idUtilisateur)}
+          </p>
         </div>
-      </div>
-      <textarea
-        value={nouveauCommentaire}
-        onChange={setNouveauCommentaireValue}
-        placeholder="Votre commentaire..."
-      ></textarea>
-      <button onClick={envoyerCommentaire} className="comment-btn">
-        Commenter
-      </button>
-      {commentaires.length > 0 && (
+        <h2>{publication.titre}</h2>
+
+        {publication.contenu && (
+          <img
+            src="https://picsum.photos/200/300"
+            alt="Image de la publication"
+          />
+        )}
+        <p>{publication.contenu}</p>
+        <p>Catégorie {publication.idCategorie}</p>
         <div>
-          {commentaires.map((commentaire) => (
-            <div key={commentaire.id} className="commentaire">
-              <p>"{commentaire.contenu}"</p>
-              <p>Posté par {getNomUtilisateur(commentaire.idUtilisateur)}</p>
-              <p>Le {commentaire.datePublication}</p>
-              <div className="repondre-commentaire">
-                <textarea placeholder="Votre réponse"></textarea>
-                <div className="btn-commentaires">
-                  <div>
-                    <button >Répondre</button>
-                  </div>
-                  <div className="moderation-commentaire">
-                    <button>Modérer</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+          {selectedRole !== 0 && (
+            <div>
+              <div className="interactions">
+                <button className="icon" aria-label="mettre en favoris">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/FA_star.svg" alt="Bouton de mise en favoris" />
+                </button>
+                <button className="icon" aria-label="sauvegarder pour plus tard">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Clock_%2889654%29_-_The_Noun_Project.svg" alt="Bouton de mise de côté" />
+                </button>
+                <button className="icon" aria-label="partager">
+                  <img src="https://www.svgrepo.com/show/122182/share-button.svg" alt="Bouton de partage" />
+                </button>
+                <button className="icon" aria-label="editer">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Edit_icon_%28the_Noun_Project_30184%29.svg/1024px-Edit_icon_%28the_Noun_Project_30184%29.svg.png" alt="Bouton d'édition'" />
+                </button>
 
-      )}
-    </div>
+                {selectedRole >= 2 && (
+                  <div className="moderation-ressource">
+                    <button className="icon" aria-label="refuser">
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Red_X.svg/1024px-Red_X.svg.png" alt="Bouton d'édition'" />
+                    </button><button className="icon" aria-label="valider">
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Feedbin-Icon-check.svg/1200px-Feedbin-Icon-check.svg.png" alt="Bouton de validation de ressource" />
+                    </button>
+                  </div>
+                )}
+              </div>
+              <div>
+                <textarea
+                  value={nouveauCommentaire}
+                  onChange={setNouveauCommentaireValue}
+                  placeholder="Votre commentaire..."
+                ></textarea>
+                <button onClick={envoyerCommentaire} className="comment-btn">
+                  Commenter
+                </button>
+              </div>
+
+            </div>
+          )}
+        </div>
+        {commentaires.length > 0 && (
+          <div>
+            {commentaires.map((commentaire) => (
+              <div key={commentaire.id} className="commentaire">
+                <p>"{commentaire.contenu}"</p>
+                <p>Posté par {getNomUtilisateur(commentaire.idUtilisateur)}</p>
+                <p>Le {commentaire.datePublication}</p>
+                {selectedRole !== 0 && (
+
+                  <div className="repondre-commentaire">
+                    <textarea placeholder="Votre réponse"></textarea>
+                    <div className="btn-commentaires">
+                      <div>
+                        <button >Répondre</button>
+                      </div>
+
+                      {selectedRole >= 2 && (
+                        <div className="moderation-commentaire">
+                          <button>Modérer</button>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+        )}
+      </div>
+    </>
   );
 }

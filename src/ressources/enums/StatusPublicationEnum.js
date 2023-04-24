@@ -1,5 +1,5 @@
-const StatusPublicationEnum = {
-  ENATTENTE: "En attente",
-  VALIDEE: "Validée",
-  REFUSEE: "Refusée",
+export const StatusPublicationEnum = {
+  PENDING: "PENDING",
+  APPROVED: "APPROVED",
+  REJECTED: "REJECTED",
 };

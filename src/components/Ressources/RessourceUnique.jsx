@@ -24,26 +24,28 @@ export default function RessourceUnique() {
   }, []);
 
   useEffect(() => {
+    const params = {
+      "idRessource[equals]": id,
+      include: "utilisateur",
+    };
     PublicationService.getPublication(id).then((publication) => {
+      console.log("publication", publication);
       setPublications(publication);
-      const params = {
-        "idRessource[equals]": id,
-        include: "utilisateur",
-      };
-      CommentaireService.getCommentairesByRessourceId(params).then(
-        (commentaires) => {
-          setCommentaires(commentaires.data);
-          const userIds = commentaires.data.map(
-            (commentaire) => commentaire.idUtilisateur
-          );
-          UtilisateurService.getUtilisateursByIds(userIds).then(
-            (utilisateurs) => {
-              setUtilisateurs(utilisateurs.data);
-            }
-          );
-        }
-      );
     });
+    CommentaireService.getCommentairesByRessourceId(params).then(
+      (commentaires) => {
+        setCommentaires(commentaires.data);
+        const userIds = commentaires.data.map(
+          (commentaire) => commentaire.idUtilisateur
+        );
+        UtilisateurService.getUtilisateursByIds(userIds).then(
+          (utilisateurs) => {
+            setUtilisateurs(utilisateurs.data);
+          }
+        );
+      }
+    );
+
   }, [id]);
 
   const setNouveauCommentaireValue = (e) => {
@@ -62,10 +64,6 @@ export default function RessourceUnique() {
     });
   };
 
-  const getNomUtilisateur = (idUtilisateur) => {
-    const utilisateur = utilisateurs.find((utilisateur) => utilisateur.id === idUtilisateur);
-    return utilisateur ? utilisateur.nom : "";
-  };
 
   if (!publication) return null;
 
@@ -80,7 +78,7 @@ export default function RessourceUnique() {
               </div>
             )}
             Mis en ligne le {publication.dateCreation} par{" "}
-            {getNomUtilisateur(publication.idUtilisateur)}
+            {/* {publication.utilisateur.nom} {publication.utilisateur.prenom} */}
           </p>
         </div>
         <h2>{publication.titre}</h2>
@@ -140,7 +138,9 @@ export default function RessourceUnique() {
             {commentaires.map((commentaire) => (
               <div key={commentaire.id} className="commentaire">
                 <p>"{commentaire.contenu}"</p>
-                <p>Posté par {getNomUtilisateur(commentaire.idUtilisateur)}</p>
+                <p>Posté par
+                  {/* {publication.utilisateur.nom} {publication.utilisateur.prenom} */}
+                </p>
                 <p>Le {commentaire.datePublication}</p>
                 {selectedRole !== 0 && (
 

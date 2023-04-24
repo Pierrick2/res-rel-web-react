@@ -21,10 +21,6 @@ export default function ListeRessources() {
       setSelectedRole(Number(role));
     });
 
-
-
-
-
     const params = {
       "status[equals]=": StatusPublicationEnum.APPROVED,
       "partage[equals]=": VisibilitePublicationEnum.PUBLIC,

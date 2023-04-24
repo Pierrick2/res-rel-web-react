@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import RessourceUnique from "./Ressources/RessourceUnique";
-import Navbar from "../components/Navbar/Navbar";
+import Navbar from "./Navbar/Navbar";
 import CreationActivite from "./Activites/CreationActivite";
 import ListeRessources from "./Ressources/ListeRessources";
 import CreationRessource from "./Ressources/CreationRessource";
@@ -22,6 +22,7 @@ import AdminStats from "./Statistiques/AdminStats";
 
 function App() {
   const [isAuthenticated] = useState(true);
+
   return (
     <div className="App">
       <Navbar isAuthenticated={isAuthenticated} />

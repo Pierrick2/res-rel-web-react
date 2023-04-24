@@ -1,7 +1,10 @@
 import RestClient from "./RestClient";
+import { BehaviorSubject } from "rxjs";
 class UtilisateurService {
   baseUrl = "utilisateurs";
   restClient;
+
+  roleUtilisateur = new BehaviorSubject(1);
 
   constructor() {
     this.restClient = new RestClient();
@@ -24,6 +27,14 @@ class UtilisateurService {
     } else {
       return null;
     }
+  }
+
+  setRoleUtilisateur(role) {
+    this.roleUtilisateur.next(role);
+  }
+
+  getRoleUtilisateur() {
+    return this.roleUtilisateur.asObservable();
   }
 }
 

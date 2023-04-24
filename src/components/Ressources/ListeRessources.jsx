@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PublicationService from "../../services/PublicationService";
 import "../../styles/AffichageRessources.scss";
 import "../../styles/BarreRecherche.scss";
@@ -8,17 +7,28 @@ import { StatusPublicationEnum } from "../../ressources/enums/StatusPublicationE
 import { VisibilitePublicationEnum } from "../../ressources/enums/VisibilitePublicationEnum";
 import BarreRecherche from "../Navbar/BarreRecherche";
 import RechercheService from "../../services/RechercheService";
+import UtilisateurService from "../../services/UtilisateurService";
 
 export default function ListeRessources() {
   const [publications, setPublications] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedRole, setSelectedRole] = useState(0);
 
-  React.useEffect(() => {
+
+  useEffect(() => {
+    UtilisateurService.getRoleUtilisateur().subscribe((role) => {
+      setSelectedRole(Number(role));
+    });
+
+
+
+
+
     const params = {
       "status[equals]=": StatusPublicationEnum.APPROVED,
       "partage[equals]=": VisibilitePublicationEnum.PUBLIC,
-      include: "categorie,utilisateur",
+      include: "categorie,utilisateur,pieceJointe",
     };
     PublicationService.GetPublications(params).then((publications) => {
       console.log("publications", publications);
@@ -42,28 +52,12 @@ export default function ListeRessources() {
       publication.idCategorie === selectedCategory
   );
 
-  const handleCategoryChange = (event) => {
-    setSelectedCategory(event.target.value);
-  };
+
   return (
     <div>
       < BarreRecherche />
-      <div className="search-form">
-        <label htmlFor="categorieFilter">Filtrer par catégorie:</label>
-        <select
-          id="categorieFilter"
-          onChange={handleCategoryChange}
-          value={selectedCategory}
-        >
-          <option value="">Toutes les catégories</option>
-          <option value="1">Catégorie 1</option>
-          <option value="2">Catégorie 2</option>
-          <option value="3">Catégorie 3</option>
-        </select>
-      </div>
+
       {filteredPublications.map((publication) => (
-
-
 
         <div className="ressource-card " key={publication.id}>
           <div>
@@ -79,19 +73,22 @@ export default function ListeRessources() {
             <p>{publication.contenu}</p>
             {/* <p>Catégorie {publication.categorie.nom}</p> */}
             <div className="interactions">
-              <button className="icon" aria-label="mettre en favoris">
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/5/57/FA_star.svg"
-                  alt="Bouton de mise en favoris"
-                />
-              </button>
-              <button className="icon" aria-label="sauvegarder pour plus tard">
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Clock_%2889654%29_-_The_Noun_Project.svg"
-                  alt="Bouton de mise de côté"
-                />
-              </button>
-
+              {selectedRole !== 0 && (
+                <div>
+                  <button className="icon" aria-label="mettre en favoris">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/5/57/FA_star.svg"
+                      alt="Bouton de mise en favoris"
+                    />
+                  </button>
+                  <button className="icon" aria-label="sauvegarder pour plus tard">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Clock_%2889654%29_-_The_Noun_Project.svg"
+                      alt="Bouton de mise de côté"
+                    />
+                  </button>
+                </div>
+              )}
               <button className="voir-plus">
                 <Link to={`/ressources/${publication.id}`}>Voir plus</Link>
               </button>

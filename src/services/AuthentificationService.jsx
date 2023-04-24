@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useMemo, useReducer } from "react";
 import { AuthentificationEnum } from "../ressources/enums/AuthentificationEnum";
-import { useCookies } from "react-cookie";
+import Cookies from "js-cookie";
 
 const AuthContext = React.createContext({});
 const AUTHENTICATED = AuthentificationEnum.AUTHENTICATED;
@@ -8,9 +8,7 @@ const ACCESS_TOKEN_KEY = AuthentificationEnum.ACCESS_TOKEN_KEY;
 const CURRENT_USER = AuthentificationEnum.CURRENT_USER;
 const token = "3|QEDaQoBy4jtzrAFZlSMcnnue8rl94pNhfjSapUr8";
 
-// const [cookies, setCookie, removeCookie] = useCookies([
-//   AuthentificationEnum.ACCESS_TOKEN_KEY,
-// ]);
+
 
 const getUtilisateurToken = () => {
   // Récupère le token de l'utilisateur
@@ -39,9 +37,6 @@ const getUtilisateur = (token) => {
 
 // Récupère le
 export const AuthContainer = ({ children }) => {
-    const [cookies, setCookie, removeCookie] = useCookies([
-        AuthentificationEnum.ACCESS_TOKEN_KEY,
-      ]);
   const [authState, dispatch] = useReducer(
     (prevState, action) => {
       switch (action.type) {
@@ -69,7 +64,8 @@ export const AuthContainer = ({ children }) => {
         try {
           const result = await getUtilisateurToken();
 
-          setCookie(ACCESS_TOKEN_KEY, result.access_token, { path: '/' });
+          Cookies.set(ACCESS_TOKEN_KEY, result.access_token, {});
+
 
           let user = await getUtilisateur(result.access_token);
 
@@ -90,13 +86,15 @@ export const AuthContainer = ({ children }) => {
         }
       },
       logout: async () => {
-        removeCookie(ACCESS_TOKEN_KEY);
+        Cookies.remove(ACCESS_TOKEN_KEY);
         localStorage.removeItem(CURRENT_USER);
         // Ici, vous pouvez ajouter un état pour gérer le non authentifié
       },
 
       resume: async () => {
-        const token = cookies[ACCESS_TOKEN_KEY];
+        const token = Cookies.get(ACCESS_TOKEN_KEY);
+
+        console.log("token", token);
 
         // When no token is found, don't try to fetch the user
         if (!token) {
@@ -104,6 +102,9 @@ export const AuthContainer = ({ children }) => {
         }
 
         let user = await getUtilisateur(token);
+
+
+        console.log("bonjour", user);
 
         // Add all other user Attributes here
         // TODO: à supprimer après
@@ -127,9 +128,9 @@ export const AuthContainer = ({ children }) => {
     facade.resume();
   }, [facade]);
 
-  
+
   return (
-    <AuthContext.Provider value={{...facade, authState}}>
+    <AuthContext.Provider value={{ ...facade, authState }}>
       {children}
     </AuthContext.Provider>
   );

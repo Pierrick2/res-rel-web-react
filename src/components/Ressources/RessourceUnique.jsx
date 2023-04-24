@@ -6,6 +6,7 @@ import "../../styles/RessourceUnique.scss";
 import CommentaireService from "../../services/CommentaireService";
 import UtilisateurService from "../../services/UtilisateurService";
 import { IonIcon } from "@ionic/react";
+import { checkmarkCircle, star, bookmark, shareSocial, createOutline, checkmarkOutline, closeOutline } from "ionicons/icons";
 
 export default function RessourceUnique() {
   const [publication, setPublications] = useState([]);
@@ -74,7 +75,9 @@ export default function RessourceUnique() {
         <div className="ressource-card-header">
           <p className="infos-ressources">
             {selectedRole !== 0 && (
-              <img src="https://www.svgrepo.com/download/169312/check-mark.svg" alt="marqueur d'exploitation" />
+              <div>
+                <IonIcon icon={checkmarkCircle} />
+              </div>
             )}
             Mis en ligne le {publication.dateCreation} par{" "}
             {getNomUtilisateur(publication.idUtilisateur)}
@@ -94,25 +97,26 @@ export default function RessourceUnique() {
           {selectedRole !== 0 && (
             <div>
               <div className="interactions">
-                <button className="icon" aria-label="mettre en favoris">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/FA_star.svg" alt="Bouton de mise en favoris" />
+                <button id="star" className="icon" aria-label="mettre en favoris">
+                  <IonIcon icon={star} />
                 </button>
                 <button className="icon" aria-label="sauvegarder pour plus tard">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Clock_%2889654%29_-_The_Noun_Project.svg" alt="Bouton de mise de côté" />
+                  <IonIcon icon={bookmark} />
                 </button>
                 <button className="icon" aria-label="partager">
-                  <img src="https://www.svgrepo.com/show/122182/share-button.svg" alt="Bouton de partage" />
+                  <IonIcon icon={shareSocial} />
+
                 </button>
                 <button className="icon" aria-label="editer">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Edit_icon_%28the_Noun_Project_30184%29.svg/1024px-Edit_icon_%28the_Noun_Project_30184%29.svg.png" alt="Bouton d'édition'" />
+                  <IonIcon icon={createOutline} />
                 </button>
 
                 {selectedRole >= 2 && (
                   <div className="moderation-ressource">
                     <button className="icon" aria-label="refuser">
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Red_X.svg/1024px-Red_X.svg.png" alt="Bouton d'édition'" />
+                      <IonIcon icon={checkmarkOutline} />
                     </button><button className="icon" aria-label="valider">
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Feedbin-Icon-check.svg/1200px-Feedbin-Icon-check.svg.png" alt="Bouton de validation de ressource" />
+                      <IonIcon icon={closeOutline} />
                     </button>
                   </div>
                 )}

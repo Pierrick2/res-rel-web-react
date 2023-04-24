@@ -1,5 +1,5 @@
 import React from "react";
-import { PublicationService } from "../../services/PublicationService";
+import PublicationService from "../../services/PublicationService";
 import moment from "moment";
 
 const Publication = (props) => {

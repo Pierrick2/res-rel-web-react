@@ -1,7 +1,7 @@
 import { PublicationEntity } from "../ressources/models/PublicationEntity";
 import RestClient from "./RestClient";
 
-export class PublicationService {
+class PublicationService {
   baseUrl = "ressources";
 
   restClient;
@@ -25,7 +25,7 @@ export class PublicationService {
     return data;
   }
 
-  async getPublications(query = {}) {
+  async GetPublications(query = {}) {
     const response = await this.restClient.get(this.baseUrl, query);
     return response.data;
   }
@@ -54,7 +54,7 @@ export class PublicationService {
         publication.navigation
       );
     });
-    
+
     console.log(PublicationEntity);
     return listePublications;
   }

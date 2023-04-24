@@ -1,5 +1,4 @@
 import { BehaviorSubject, Observable } from "rxjs";
-import FiltreEntity from "../ressources/models/FiltreEntity";
 
 class FiltreService {
   filtres = new BehaviorSubject({});

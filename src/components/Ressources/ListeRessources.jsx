@@ -6,6 +6,8 @@ import "../../styles/BarreRecherche.scss";
 import { Link } from "react-router-dom";
 import { StatusPublicationEnum } from "../../ressources/enums/StatusPublicationEnum";
 import { VisibilitePublicationEnum } from "../../ressources/enums/VisibilitePublicationEnum";
+import BarreRecherche from "../Navbar/BarreRecherche";
+import RechercheService from "../../services/RechercheService";
 
 export default function ListeRessources() {
   const [publications, setPublications] = useState([]);
@@ -18,10 +20,16 @@ export default function ListeRessources() {
       "partage[equals]=": VisibilitePublicationEnum.PUBLIC,
       include: "categorie,utilisateur",
     };
-    PublicationService.getPublications(params).then((publications) => {
+    PublicationService.GetPublications(params).then((publications) => {
       console.log("publications", publications);
       setPublications(publications);
     });
+
+    RechercheService.GetListeResRessources().subscribe((data) => {
+      console.log("data", data);
+      setPublications(data);
+    });
+
   }, []);
 
   if (publications.length === 0) {
@@ -39,18 +47,7 @@ export default function ListeRessources() {
   };
   return (
     <div>
-      <div className="search-form">
-        <input
-          type="text"
-          placeholder="Rechercher une ressource, un auteur ..."
-        />
-        <button
-          type="submit"
-          onChange={(event) => setSearchTerm(event.target.value)}
-        >
-          Rechercher
-        </button>
-      </div>
+      < BarreRecherche />
       <div className="search-form">
         <label htmlFor="categorieFilter">Filtrer par catégorie:</label>
         <select
@@ -65,6 +62,9 @@ export default function ListeRessources() {
         </select>
       </div>
       {filteredPublications.map((publication) => (
+
+
+
         <div className="ressource-card " key={publication.id}>
           <div>
             <h2>{publication.titre}</h2>
@@ -77,7 +77,7 @@ export default function ListeRessources() {
               alt="Image de la publication"
             />
             <p>{publication.contenu}</p>
-            <p>Catégorie {publication.categorie.nom}</p>
+            {/* <p>Catégorie {publication.categorie.nom}</p> */}
             <div className="interactions">
               <button className="icon" aria-label="mettre en favoris">
                 <img

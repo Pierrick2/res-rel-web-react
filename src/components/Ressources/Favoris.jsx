@@ -13,7 +13,7 @@ export default function Favoris() {
       const params = {
         "id[in]=": utilisateur.favoris.join(","),
       };
-      PublicationService.getPublications(params).then((ressources) => {
+      PublicationService.GetPublications(params).then((ressources) => {
         setRessources(ressources.data);
       });
     });

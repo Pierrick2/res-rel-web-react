@@ -5,9 +5,6 @@ import { useEffect } from 'react';
 import UtilisateurService from '../../services/UtilisateurService';
 import { useState } from 'react';
 
-
-
-
 export default function SideMenu({ isAuthenticated }) {
   const [selectedRole, setSelectedRole] = useState(0);
   useEffect(() => {

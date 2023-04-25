@@ -1,3 +1,14 @@
+import React from 'react'
+import "../../styles/Favoris.scss";
+
+export default function Favoris() {
+    return (
+        <h1>Page Favoris</h1>
+    )
+}
+
+
+
 // import React, { useState, useEffect } from "react";
 // import PublicationService from "../../services/PublicationService";
 // import UtilisateurService from "../../services/UtilisateurService";

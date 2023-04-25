@@ -4,7 +4,7 @@ class UtilisateurService {
   baseUrl = "utilisateurs";
   restClient;
 
-  roleUtilisateur = new BehaviorSubject(1);
+  roleUtilisateur = new BehaviorSubject(0);
 
   constructor() {
     this.restClient = new RestClient();

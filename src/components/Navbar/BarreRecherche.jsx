@@ -11,7 +11,7 @@ function BarreRecherche() {
   const [searchValue, setSearchValue] = useState("");
   const [afficheHeader, setAfficheHeader] = useState(true);
   const [noResults, setNoResults] = useState(false);
-
+  const [selectedFiltre, setSelectedFiltre] = useState(0);
   const filtres = new BehaviorSubject({});
 
   useEffect(() => {
@@ -72,7 +72,9 @@ function BarreRecherche() {
       );
     }
   };
-
+  const handleFiltreChange = (event) => {
+    setSelectedFiltre(Number(event.target.value));
+  };
   // useEffect(() => {
   //   const timer = setTimeout(() => {
   //     startSearch();
@@ -92,9 +94,19 @@ function BarreRecherche() {
         />
         <button onClick={startSearch} type="button">Rechercher</button>
       </div>
+
       {noResults && (
         <div className="no-results-message">
           Aucun résultat trouvé.
+
+          <div>
+            <select name="Filtres" id="Filtres" value={selectedFiltre} onChange={handleFiltreChange}>
+              <option value="Toutes">Toutes les catégories</option>
+              <option value="Communication">Communication</option>
+              <option value="Culture">Culture</option>
+              <option value="DeveloppementPerso">Développement personnel</option>
+            </select>
+          </div>
         </div>
       )}
     </>

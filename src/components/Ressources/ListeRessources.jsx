@@ -60,11 +60,12 @@ export default function ListeRessources() {
 
         <div className="ressource-card " key={publication.id}>
           <div>
-            <h2>{publication.titre}</h2>
-            <p>
+
+            <p className="infos-ressources">
               Mis en ligne le {publication.dateCreation} par{" "}
               {publication.utilisateur.nom} {publication.utilisateur.prenom}
             </p>
+            <h2>{publication.titre}</h2>
             <img
               src="https://picsum.photos/200/300"
               alt="Image de la publication"

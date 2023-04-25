@@ -8,6 +8,8 @@ import { VisibilitePublicationEnum } from "../../ressources/enums/VisibilitePubl
 import BarreRecherche from "../Navbar/BarreRecherche";
 import RechercheService from "../../services/RechercheService";
 import UtilisateurService from "../../services/UtilisateurService";
+import { IonIcon } from "@ionic/react";
+import { star, bookmark } from "ionicons/icons";
 
 export default function ListeRessources() {
   const [publications, setPublications] = useState([]);
@@ -19,6 +21,7 @@ export default function ListeRessources() {
   useEffect(() => {
     UtilisateurService.getRoleUtilisateur().subscribe((role) => {
       setSelectedRole(Number(role));
+      console.log("role", role);
     });
 
     const params = {
@@ -71,17 +74,11 @@ export default function ListeRessources() {
             <div className="interactions">
               {selectedRole !== 0 && (
                 <div>
-                  <button className="icon" aria-label="mettre en favoris">
-                    <img
-                      src="https://upload.wikimedia.org/wikipedia/commons/5/57/FA_star.svg"
-                      alt="Bouton de mise en favoris"
-                    />
+                  <button id="star" className="icon" aria-label="mettre en favoris">
+                    <IonIcon icon={star} />
                   </button>
-                  <button className="icon" aria-label="sauvegarder pour plus tard">
-                    <img
-                      src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Clock_%2889654%29_-_The_Noun_Project.svg"
-                      alt="Bouton de mise de côté"
-                    />
+                  <button id="star" className="icon" aria-label="sauvegarder pour plus tard">
+                    <IonIcon icon={bookmark} />
                   </button>
                 </div>
               )}

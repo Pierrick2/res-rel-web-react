@@ -18,12 +18,10 @@ export default function RessourceUnique() {
   const { id } = useParams();
 
   useEffect(() => {
+
     UtilisateurService.getRoleUtilisateur().subscribe((role) => {
       setSelectedRole(Number(role));
     });
-  }, []);
-
-  useEffect(() => {
     const params = {
       "idRessource[equals]": id,
       include: "utilisateur",
@@ -74,7 +72,7 @@ export default function RessourceUnique() {
           <p className="infos-ressources">
             {selectedRole !== 0 && (
               <div>
-                <IonIcon icon={checkmarkCircle} />
+                <IonIcon id="star-modo-v" icon={checkmarkCircle} />
               </div>
             )}
             Mis en ligne le {publication.dateCreation} par{" "}
@@ -98,22 +96,23 @@ export default function RessourceUnique() {
                 <button id="star" className="icon" aria-label="mettre en favoris">
                   <IonIcon icon={star} />
                 </button>
-                <button className="icon" aria-label="sauvegarder pour plus tard">
+                <button id="star" className="icon" aria-label="sauvegarder pour plus tard">
                   <IonIcon icon={bookmark} />
                 </button>
-                <button className="icon" aria-label="partager">
+                <button id="star" className="icon" aria-label="partager">
                   <IonIcon icon={shareSocial} />
 
                 </button>
-                <button className="icon" aria-label="editer">
+                <button id="star" className="icon" aria-label="editer">
                   <IonIcon icon={createOutline} />
                 </button>
 
                 {selectedRole >= 2 && (
                   <div className="moderation-ressource">
-                    <button className="icon" aria-label="refuser">
+                    <button id="star-modo-v" className="icon" aria-label="refuser">
                       <IonIcon icon={checkmarkOutline} />
-                    </button><button className="icon" aria-label="valider">
+                    </button>
+                    <button id="star-modo" className="icon" aria-label="valider">
                       <IonIcon icon={closeOutline} />
                     </button>
                   </div>

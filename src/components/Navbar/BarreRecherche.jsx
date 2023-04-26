@@ -6,6 +6,7 @@ import RechercheService from "../../services/RechercheService";
 import FiltreService from "../../services/FiltreService";
 import { BehaviorSubject } from "rxjs";
 
+
 function BarreRecherche() {
 
   const [searchValue, setSearchValue] = useState("");
@@ -81,6 +82,7 @@ function BarreRecherche() {
   //   }, 250);
   //   return () => clearTimeout(timer);
   // }, [searchValue]);
+
   return (
     <>
       <div className="search-form">
@@ -99,14 +101,6 @@ function BarreRecherche() {
         <div className="no-results-message">
           Aucun résultat trouvé.
 
-          <div>
-            <select name="Filtres" id="Filtres" value={selectedFiltre} onChange={handleFiltreChange}>
-              <option value="Toutes">Toutes les catégories</option>
-              <option value="Communication">Communication</option>
-              <option value="Culture">Culture</option>
-              <option value="DeveloppementPerso">Développement personnel</option>
-            </select>
-          </div>
         </div>
       )}
     </>

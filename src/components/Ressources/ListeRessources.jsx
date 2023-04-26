@@ -10,6 +10,7 @@ import RechercheService from "../../services/RechercheService";
 import UtilisateurService from "../../services/UtilisateurService";
 import { IonIcon } from "@ionic/react";
 import { star, bookmark } from "ionicons/icons";
+import Filtres from "../Navbar/Filtres";
 
 export default function ListeRessources() {
   const [publications, setPublications] = useState([]);
@@ -55,7 +56,7 @@ export default function ListeRessources() {
   return (
     <div>
       < BarreRecherche />
-
+      < Filtres />
       {filteredPublications.map((publication) => (
 
         <div className="ressource-card " key={publication.id}>

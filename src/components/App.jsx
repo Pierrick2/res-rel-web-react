@@ -20,38 +20,40 @@ import Statistiques from "./Ressources/Statistiques";
 import Notifications from "./Navbar/Notifications";
 import AdminStats from "./Statistiques/AdminStats";
 import Administration from "./Utilisateur/Administration";
+import { NativeBaseProvider } from 'native-base';
 
 function App() {
   const [isAuthenticated] = useState(true);
 
   return (
-    <div className="App">
-      <Navbar isAuthenticated={isAuthenticated} />
-      <SideMenu isAuthenticated={isAuthenticated} />
-      <Routes>
-        <Route path="/" element={<ListeRessources />} />
-        <Route path="/inscription" element={<Inscription />} />
-        <Route path="/connexion" element={<Connexion />} />
-        <Route path="/parametres" element={<Parametres />} />
-        <Route path="/relations" element={<Relations />} />
-        <Route path="/activites" element={<Activites />} />
-        <Route path="/ressources/:id" element={<RessourceUnique />} />
-        <Route path="/creation-ressource" element={<CreationRessource />} />
-        <Route path="/ressources" element={<ListeRessources />} />
-        <Route path="/creation-activite" element={<CreationActivite />} />
-        <Route path="/activite-unique" element={<ActiviteUnique />} />
-        <Route path="/publication" element={<Publication />} />
-        <Route path="/parametres" element={<Parametres />} />
-        <Route path="/profil" element={<Profil />} />
-        <Route path="/favoris" element={<Favoris />} />
-        <Route path="/a-regarder-plus-tard" element={<RegarderPlusTard />} />
-        <Route path="/statistiques" element={<Statistiques />} />
-        <Route path="/notifications" element={<Notifications />} />
-        <Route path="/admin-stats" element={<AdminStats />} />
-        <Route path="/administration" element={<Administration />} />
-
-      </Routes>
-    </div>
+    <NativeBaseProvider>
+      <div className="App">
+        <Navbar isAuthenticated={isAuthenticated} />
+        <SideMenu isAuthenticated={isAuthenticated} />
+        <Routes>
+          <Route path="/" element={<ListeRessources />} />
+          <Route path="/inscription" element={<Inscription />} />
+          <Route path="/connexion" element={<Connexion />} />
+          <Route path="/parametres" element={<Parametres />} />
+          <Route path="/relations" element={<Relations />} />
+          <Route path="/activites" element={<Activites />} />
+          <Route path="/ressources/:id" element={<RessourceUnique />} />
+          <Route path="/creation-ressource" element={<CreationRessource />} />
+          <Route path="/ressources" element={<ListeRessources />} />
+          <Route path="/creation-activite" element={<CreationActivite />} />
+          <Route path="/activite-unique" element={<ActiviteUnique />} />
+          <Route path="/publication" element={<Publication />} />
+          <Route path="/parametres" element={<Parametres />} />
+          <Route path="/profil" element={<Profil />} />
+          <Route path="/favoris" element={<Favoris />} />
+          <Route path="/a-regarder-plus-tard" element={<RegarderPlusTard />} />
+          <Route path="/statistiques" element={<Statistiques />} />
+          <Route path="/notifications" element={<Notifications />} />
+          <Route path="/admin-stats" element={<AdminStats />} />
+          <Route path="/administration" element={<Administration />} />
+        </Routes>
+      </div>
+    </NativeBaseProvider>
   );
 }
 
